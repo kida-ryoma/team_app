@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   get 'homes/index'
   root "homes#index"
+  resources :teams, only: [:new, :create]
 end
