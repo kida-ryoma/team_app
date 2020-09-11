@@ -9,4 +9,16 @@ Rails.application.routes.draw do
   get 'homes/index'
   root "homes#index"
   resources :teams, only: [:new, :create]
+
 end
+
+def devise_scope(scope)
+      constraint = lambda do |request|
+        request.env["devise.mapping"] = Devise.mappings[scope]
+        true
+      end
+
+      constraints(constraint) do
+        yield
+      end
+    end

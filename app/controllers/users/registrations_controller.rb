@@ -19,9 +19,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def admin_create
+    # if 
     @user = User.create(user_params)
     @user.update(admin: 1)
-    redirect_to root_path
+    # binding.pry
+    sign_in(:user, @user)
+    after_sign_up_path_for(@user)
   end
 
   # GET /resource/edit
@@ -48,7 +51,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  protected
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+   # The path used after sign up.
+  def after_sign_up_path_for(resource)
+    redirect_to new_team_path
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -60,14 +72,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   redirect_to root_path
-  # end
+ 
 
-  def user_params
-    params.require(:user).permit(:name, :email)
-  end
+  
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

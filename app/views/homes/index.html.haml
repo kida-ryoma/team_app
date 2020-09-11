@@ -4,6 +4,10 @@
       .title
         = image_tag "10092020054442A (1).png", class: "logo"
         %h3 サッカーチームの管理を、もっとスマートに。
+        -if user_signed_in?
+          %p あ
+        - else
+          %p い
       .sign
         = link_to "管理者ログイン", users_registrations_admin_signup_path
         = link_to "ユーザーログイン", ""

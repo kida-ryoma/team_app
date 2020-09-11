@@ -1,0 +1,11 @@
+あなたのチームを登録しましょう
+-if user_signed_in?
+  あ
+- else
+  %p い
+= form_with model: @team, url:teams_path , class: "Box", local: true do |f|
+  .signup
+    .signup__name
+    = f.label :name, class: "signUpForm__label"
+    = f.text_field :name, class: "signupForm1", placeholder: "例) メルカリ太郎"
+    = f.submit "次へ進む", class: "signUpBtn"
