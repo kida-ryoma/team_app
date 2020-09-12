@@ -12,8 +12,9 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.create(team_params)
-    @team.update(user_id: current_user.id)
-    redirect_to root_path
+    @team.update(admin_user_id: current_user.id)
+    @user.update(team_id: @team.id)
+    redirect_to main_team_path(@team)
   end
 
   def show
@@ -27,7 +28,7 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     @team.update(team_params)
-    redirect_to root_path
+    redirect_to main_team_path(@team)
   end
 
 

@@ -1,8 +1,9 @@
 あなたのチームを編集しましょう
 -if user_signed_in?
-  あ
+  ログイン済み
 - else
-  %p い
+  %p ログアウトしてるで？
+  
 = form_with model: @team, url:team_path , class: "Box", local: true do |f|
   .signup
     .signup__name
