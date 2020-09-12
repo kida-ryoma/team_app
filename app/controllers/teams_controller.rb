@@ -19,6 +19,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @members = User.where(team_id: @team.id)
   end
 
   def edit
@@ -39,13 +40,14 @@ class TeamsController < ApplicationController
 
   def add_user
     @team = Team.find(params[:id])
-    @user = User.new 
+    @user = User.new
   end
 
   def create_user
     @team = Team.find(params[:id])
     @user = User.create(user_params)
     @user.update(team_id: @team.id)
+    sign_in(:user, @user)
     redirect_to main_team_path(@team.id)
   end
 

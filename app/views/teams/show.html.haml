@@ -1,5 +1,18 @@
-チームの編集をしましょう
-
-= @team.name
-
-= link_to "チームを編集する", edit_team_path(@team)
+.main-wrapper
+  %aside
+    %nav
+      .team-name
+        = @team.name
+      %ul
+        %li HOME
+        %li Mypage 
+        %li Notice
+        %li DM
+        %li 
+          = link_to "Edit", edit_team_path(@team.id)
+        -# %li
+        -#   = link_to "メンバーを招待する", send_mail_team_path(@team.id)
+        %li Log out
+    -# .side-footer
+    -#   = image_tag "A6.png", class: "logo"
+  %main
