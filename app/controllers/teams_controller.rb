@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_user
 
   def main
@@ -25,6 +25,18 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
+  def add_user
+    @team = Team.find(params[:id])
+    @user = User.new 
+  end
+
+  def create_user
+    @team = Team.find(params[:id])
+    @user = User.create(user_params)
+    @user.update(team_id: @team.id)
+    redirect_to main_team_path(@team.id)
+  end
+
   def update
     @team = Team.find(params[:id])
     @team.update(team_params)
@@ -40,5 +52,9 @@ class TeamsController < ApplicationController
 
   def set_user 
     @user = current_user
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

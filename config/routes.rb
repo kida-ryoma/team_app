@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :teams do
     member do
       get "main"
+      get "add_user"
+      post "create_user"
     end
   end
 
