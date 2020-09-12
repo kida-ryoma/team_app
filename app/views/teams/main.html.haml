@@ -9,22 +9,52 @@
         %li Notice
         %li DM
         %li Log out
-    .side-footer
-      = image_tag "10092020054442A (1).png", class: "logo"
+    -# .side-footer
+    -#   = image_tag "A6.png", class: "logo"
   %main
     .main-container
       .box.next-game
-        .next-game__titile
+        %h2.box__header
           = "#{@team.name}の次の試合"
         .next-game__opponent.mini-box
           .next-game__left　対戦相手
           .next-game__right　セレッソ大阪
         .next-game__date.mini-box
-          .next-game__left
-          .next-game__right
+          .next-game__left  日にち
+          .next-game__right　2020年09月26日
         .next-game__time.mini-box
-          .next-game__left
-          .next-game__right
+          .next-game__left　時間
+          .next-game__right　09:00 ~ 12:00
         .next-game__place.mini-box
-          .next-game__left
-          .next-game__left
+          .next-game__left 場所
+          .next-game__right
+            J-GREEN境
+            .next-game__right__details
+              〒590-0132 大阪府堺市南区原山台５丁１３−４３
+      .box.calendar
+        ここにカレンダーが入ります
+      .box.confirmation
+        %h2.box__header
+          参加確認が済んでいない試合
+        %table
+          %thead
+            %tr
+              %th　日時
+              %th　対戦相手
+              %th　参加未確認
+          %tbody
+            %tr
+              %td　09/03
+              %td　セレッソ大阪
+              %td　3人
+            %tr
+              %td　09/26
+              %td　横浜Fマリノス
+              %td　7人
+            %tr
+              %td　10/02
+              %td　浦和レッズ
+              %td　4人
+        
+
+

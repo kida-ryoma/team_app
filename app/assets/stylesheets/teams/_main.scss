@@ -12,6 +12,7 @@ main{
   display: flex;
   flex-direction: column;
   text-align: center;
+  color: $cDeepBlue;
   .main-container{
     width: 70%;
     margin: 0 auto;
@@ -20,9 +21,12 @@ main{
     flex-direction: column;
     justify-content: space-around;
     .box{
-    background-color: $cGray;
-    border-radius: 10px;
-    padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      &__header{
+
+      }
     }
     .next-game{
       & .mini-box{
@@ -34,6 +38,21 @@ main{
       }
       &__right{
         width: 70%;
+        &__details{
+
+        }
+      }
+    }
+    .confirmation{
+      & table{
+        width: 100%;
+      }
+      & tr{
+        display: flex;
+        justify-content: space-around;
+      }
+      & td{
+        margin: 0 auto;
       }
     }
   }
@@ -44,12 +63,12 @@ aside{
   top: 0;
   left: 0;
   width: 25%;
-  background-color: $cBlue;
+  background-color: $cDeepBlue;
   min-height: 100vh;
   font-size: $sFontM;
   display: flex;
   flex-direction: column;
-  color: $cWhite;
+  color: white;
   text-align: center;
   & nav{
     & .team-name{
@@ -75,8 +94,8 @@ aside{
     justify-content: center;
     align-items: center;
     & .logo{
-      width: 50%;
-      height: 80%;
+      width: 40%;
+      height: 90%;
     }
   }
 }
