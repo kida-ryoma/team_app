@@ -25,6 +25,12 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
+  def send_mail
+    @team = Team.find(params[:id])
+    RegistrationMailer.registration_mail(@team).deliver_now
+    redirect_to main_team_path(@team.id)
+  end
+
   def add_user
     @team = Team.find(params[:id])
     @user = User.new 

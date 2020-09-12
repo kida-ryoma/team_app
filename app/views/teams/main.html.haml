@@ -10,6 +10,8 @@
         %li DM
         %li 
           = link_to "Edit", edit_team_path(@team.id)
+        %li
+          = link_to "メンバーを招待する", send_mail_team_path(@team.id)
         %li Log out
     -# .side-footer
     -#   = image_tag "A6.png", class: "logo"
