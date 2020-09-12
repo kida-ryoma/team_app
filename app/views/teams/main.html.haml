@@ -1,0 +1,30 @@
+.main-wrapper
+  %aside
+    %nav
+      .team-name
+        = @team.name
+      %ul
+        %li HOME
+        %li Mypage
+        %li Notice
+        %li DM
+        %li Log out
+    .side-footer
+      = image_tag "10092020054442A (1).png", class: "logo"
+  %main
+    .main-container
+      .box.next-game
+        .next-game__titile
+          = "#{@team.name}の次の試合"
+        .next-game__opponent.mini-box
+          .next-game__left　対戦相手
+          .next-game__right　セレッソ大阪
+        .next-game__date.mini-box
+          .next-game__left
+          .next-game__right
+        .next-game__time.mini-box
+          .next-game__left
+          .next-game__right
+        .next-game__place.mini-box
+          .next-game__left
+          .next-game__left

@@ -1,0 +1,82 @@
+.main-wrapper{
+  display: flex;
+  position: relative;
+}
+main{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 75%;
+  background-color: $cLightBlue;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  .main-container{
+    width: 70%;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .box{
+    background-color: $cGray;
+    border-radius: 10px;
+    padding: 30px;
+    }
+    .next-game{
+      & .mini-box{
+        display: flex;
+        margin-bottom: 10px;
+      }
+      &__left{
+        width: 20%;
+      }
+      &__right{
+        width: 70%;
+      }
+    }
+  }
+}
+
+aside{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  background-color: $cBlue;
+  min-height: 100vh;
+  font-size: $sFontM;
+  display: flex;
+  flex-direction: column;
+  color: $cWhite;
+  text-align: center;
+  & nav{
+    & .team-name{
+      font-size: 50px;
+      height: 300px;
+      line-height: 300px;
+      margin-bottom: 20px;
+    }
+    & ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      & li{
+        margin-bottom: 20px;
+        font-size: $sFontL;
+      }
+    }
+  }
+  & .side-footer{
+    margin-top: auto;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .logo{
+      width: 50%;
+      height: 80%;
+    }
+  }
+}
