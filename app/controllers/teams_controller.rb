@@ -25,9 +25,15 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
-  def send_mail
+  def put_mail
     @team = Team.find(params[:id])
-    RegistrationMailer.registration_mail(@team).deliver_now
+    @email = Email.new
+  end
+
+  def send_mail
+    @email = Email.create(email_params)
+    @team = Team.find(params[:id])
+    RegistrationMailer.registration_mail(@team,@email).deliver_now
     redirect_to main_team_path(@team.id)
   end
 
@@ -62,5 +68,9 @@ class TeamsController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def email_params
+    params.require(:email).permit(:email)
   end
 end

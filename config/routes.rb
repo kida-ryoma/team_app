@@ -13,7 +13,8 @@ Rails.application.routes.draw do
       get "main"
       get "add_user"
       post "create_user"
-      get "send_mail"
+      post "send_mail"
+      get "put_mail"
     end
   end
 
