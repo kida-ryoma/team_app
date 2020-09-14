@@ -19,12 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def admin_create
-    # if 
     @user = User.create(user_params)
     @user.update(admin: 1)
-    # binding.pry
     sign_in(:user, @user)
-    after_sign_up_path_for(@user)
+    redirect_to new_team_path(@user)
   end
 
   # GET /resource/edit
@@ -58,9 +56,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
    # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    redirect_to new_team_path
-  end
+  # def after_sign_up_path_for(resource)
+  #   redirect_to new_team_path
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
