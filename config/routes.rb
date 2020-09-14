@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'games/new'
+  get 'games/create'
+  get 'games/show'
+  get 'games/edit'
+  get 'games/update'
   devise_for :users, controllers:{
     registrations: "users/registrations"
   }
