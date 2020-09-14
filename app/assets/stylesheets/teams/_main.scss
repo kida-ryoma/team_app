@@ -76,6 +76,17 @@ aside{
       height: 300px;
       line-height: 300px;
       margin-bottom: 20px;
+      & a{
+        text-decoration: none;
+        color: white;
+        display: block;
+        transition: all 0.2s ease;
+        &:hover{
+          background-color: rgba(24, 45, 60,0.8);
+          color: white;
+          text-decoration: none;
+        }
+      }
     }
     & ul{
       list-style: none;
@@ -84,6 +95,18 @@ aside{
       & li{
         margin-bottom: 20px;
         font-size: $sFontL;
+        & a{
+          text-decoration: none;
+          color: white;
+          display: block;
+          padding: 5px 0px; 
+          transition: all 0.2s ease;
+          &:hover{
+            background-color: rgba(24, 45, 60,0.8);
+            color: white;
+            text-decoration: none;
+          }
+        }
       }
     }
   }

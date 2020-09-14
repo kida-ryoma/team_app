@@ -1,7 +1,7 @@
--# -if user_signed_in?
--#   %p ログイン中
--# - else
--#   %p ログアウト済み
+-if user_signed_in?
+  %p ログイン中
+- else
+  %p ログアウト済み
 .toppage
   .container
     .top

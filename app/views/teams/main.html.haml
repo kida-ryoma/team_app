@@ -2,15 +2,21 @@
   %aside
     %nav
       .team-name
-        = @team.name
+        = link_to team_path(@team.id) do
+          = @team.name
       %ul
-        %li HOME
-        %li Mypage
-        %li Notice
-        %li DM
-        %li Log out
-    -# .side-footer
-    -#   = image_tag "A6.png", class: "logo"
+        %li
+          = link_to "Home", main_team_path(@team.id)
+        %li
+          = link_to "Mypage", ""
+        %li
+          = link_to "Notice", ""
+        %li
+          = link_to "DM", ""
+        %li 
+          = link_to "Edit", edit_team_path(@team.id)
+        %li 
+          = link_to "Log out", destroy_user_session_path, method: :delete
   %main
     .main-container
       .box.next-game
