@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'homes/index'
   root "homes#index"
   resources :teams do
+    resources :games
     member do
       get "main"
       get "add_user"
