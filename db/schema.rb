@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_070721) do
+ActiveRecord::Schema.define(version: 2020_09_15_080939) do
 
   create_table "emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_070721) do
     t.index ["user_id"], name: "index_games_users_on_user_id"
   end
 
-  create_table "nortifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "visitor_id", null: false
     t.integer "visited_id", null: false
     t.integer "game_id", null: false
