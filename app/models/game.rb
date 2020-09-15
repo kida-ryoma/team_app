@@ -13,4 +13,5 @@ class Game < ApplicationRecord
     )
     # 自分へは通知が作られない・届かないようにする
     notification.save if notification.visitor_id != notification.visited_id && notification.valid?
+  end
 end
