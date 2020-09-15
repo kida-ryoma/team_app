@@ -2,7 +2,7 @@
   %aside
     %nav
       .team-name
-        = link_to team_path(@team.id) do
+        = link_to team_path(@team.id),"data-turbolinks": false do
           = @team.name
       %ul
         %li
