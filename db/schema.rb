@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_140633) do
+ActiveRecord::Schema.define(version: 2020_09_15_043850) do
 
   create_table "emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_140633) do
     t.string "place"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.time "time"
     t.index ["team_id"], name: "index_games_on_team_id"
   end
 
