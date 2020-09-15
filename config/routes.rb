@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'games/new'
+  get 'games/create'
+  get 'games/show'
+  get 'games/edit'
+  get 'games/update'
   devise_for :users, controllers:{
     registrations: "users/registrations"
   }
@@ -9,6 +14,7 @@ Rails.application.routes.draw do
   get 'homes/index'
   root "homes#index"
   resources :teams do
+    resources :games
     member do
       get "main"
       get "add_user"

@@ -1,0 +1,16 @@
+= form_with model: @game, url:team_games_path(@team) , class: "Box", local: true do |f|
+  .signup
+    .signup__name
+    = f.label :date, class: "signUpForm__label"
+    = f.date_select :date, class: 'form-control'
+    .signup__email
+    = f.label :time, class: "signUpForm__label"
+    = f.time_select :time, placeholder: "PC・携帯どちらでも可", class: "signupForm1"
+    .signup__password
+    = f.label :opponent, class: "signUpForm__label"
+    = f.text_field :opponent, placeholder: "", class: "signUpPassword1"
+    .signUpPassWord
+    = f.label :place, class: "signUpForm__label"
+    = f.text_field :place, placeholder: "", class: "signUpPassword1"
+    %span.infoText__span
+    = f.submit "次へ進む", class: "signUpBtn"
