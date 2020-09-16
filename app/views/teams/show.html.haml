@@ -1,21 +1,5 @@
 .main-wrapper
-  %aside
-    %nav
-      .team-name
-        = @team.name
-      %ul
-        %li
-          = link_to "Home", main_team_path(@team.id)
-        %li
-          = link_to "Mypage", ""
-        %li
-          = link_to "Notice", edit_team_path(@team.id)
-        %li
-          = link_to "DM", edit_team_path(@team.id)
-        %li 
-          = link_to "Edit", edit_team_path(@team.id)
-        %li 
-          = link_to "ログアウト", destroy_user_session_path, method: :delete
+  = render partial: "sidebar", locals: { team: @team }
   %main
     .main-container
       .box
