@@ -12,6 +12,9 @@
         %li
           = link_to "Mypage", ""
         %li
+          -if unchecked_notifications.any?
+            %span
+              %i.fa.fa-circle
           = link_to "Notice", notifications_path
         %li
           = link_to "DM", ""

@@ -95,6 +95,14 @@ aside{
       & li{
         margin-bottom: 20px;
         font-size: $sFontL;
+        position: relative;
+        & i{
+          position: absolute;
+          top: 10px;
+          left: 155px;
+          color: rgb(255, 187, 0);
+          height: 15px;
+        }
         & a{
           text-decoration: none;
           color: white;
