@@ -20,9 +20,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def admin_create
     @user = User.create(user_params)
-    @user.update(admin: 1)
-    sign_in(:user, @user)
-    redirect_to new_team_path(@user)
+    @team = Team.find(session["team"]["id"])
+    @user.update(admin: 1, team_id: @team.id)
+    @team.update(admin_user_id: @user.id)
+    a = sign_in(:user, @user)
+    redirect_to main_team_path(@team.id)
   end
 
   # GET /resource/edit
