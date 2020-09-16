@@ -11,10 +11,9 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create(team_params)
-    @team.update(admin_user_id: current_user.id)
-    @user.update(team_id: @team.id)
-    redirect_to main_team_path(@team)
+    @team = Team.new(team_params)
+    session["team"] = @team.attributes
+    redirect_to users_registrations_admin_signup_path
   end
 
   def show
