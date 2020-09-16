@@ -1,16 +1,20 @@
 .main-wrapper.login
   = render partial: "homes/login_sidebar"
   %main
-    %h2.login__title 
-      Create your Team
-      %br
-      %span.login__title__description
-        あなたのチームを登録しましょう
-    = form_with model: @team, url:teams_path , class: "Box", local: true do |f|
-      .signup
-        .signup__name
-        = f.label :name, class: "signUpForm__label"
-        = f.text_field :name, class: "signupForm1", placeholder: "例) メルカリ太郎"
-        = f.label :image, class: "signUpForm__label"
-        = f.file_field :image, class: "signupForm1"
-        = f.submit "次へ進む", class: "signUpBtn"
+    .login__wrapper
+      %h2.login__title 
+        Create your Team
+        %br
+        %span.login__title__description
+          チームを登録しましょう
+      = form_with model: @team, url:teams_path , local: true do |f|
+        .field
+          = f.label :チーム名
+          %br/
+          = f.text_field :name, class: "input-form"
+        .field#img-field
+          = f.label :チームイメージ画像 
+          %br/
+          = f.file_field :image, class: "input-form", id: "img-form"
+        .field
+          = f.submit "チームを登録する", class:"sign-btn"
