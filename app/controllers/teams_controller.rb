@@ -11,7 +11,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(team_params)
+    @team = Team.create(team_params)
+    # binding.pry
     session["team"] = @team.attributes
     redirect_to users_registrations_admin_signup_path
   end

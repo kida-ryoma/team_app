@@ -20,12 +20,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def admin_create
     @user = User.create(user_params)
-    @user.update(admin: 1)
-    @team = Team.new(session["team"])
-    @team = Team.create(@team.attributes)
-    @user.update(team_id: @team.id)
+    @team = Team.find(session["team"]["id"])
+    @user.update(admin: 1, team_id: @team.id)
     @team.update(admin_user_id: @user.id)
-    sign_in(:user, @user)
+    a = sign_in(:user, @user)
     redirect_to main_team_path(@team.id)
   end
 
