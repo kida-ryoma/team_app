@@ -1,5 +1,4 @@
-= link_to new_team_game_path(@team.id) do
-  = image_tag "image1130.png", class: "game-add"
+= render partial: "create_gamebtn", locals: { team: @team }
 .main-wrapper
   = render partial: "sidebar", locals: { team: @team }
   %main
