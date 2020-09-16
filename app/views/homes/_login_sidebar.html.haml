@@ -1,0 +1,12 @@
+%aside
+  %nav
+    = link_to homes_index_path do
+      .logo-bc
+        = image_tag "A6.png", class: "logo"
+    %ul
+      %li
+        = link_to "Top",homes_index_path
+      %li
+        = link_to "Create Team", users_registrations_admin_signup_path
+      %li 
+        = link_to "Login",new_user_session_path
