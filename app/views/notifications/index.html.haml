@@ -1,8 +1,9 @@
-- @notifications.each do |notification|
-  - visitor = notification.visitor
-  - visited = notification.visited
+%h3.classtext-center
+  通知
+- if @notifications.exists? 
+  .users-index
+    = render partial: "notifications", locals: { notifications: @notifications }
+- else
+  %p 通知はありません
 
-  = visitor.name
-  = visited.name
-  = notification.action
-  = notification.game.opponent
+
