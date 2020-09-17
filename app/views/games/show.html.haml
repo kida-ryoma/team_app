@@ -1,2 +1,78 @@
-%h1 Games#show
-%p Find me in app/views/games/show.html.haml
+.main-wrapper
+  = render partial: "teams/sidebar", locals: { team: @team }
+  %main
+    .new-game
+      %h2.new-game__title 
+        Game Details
+        %br
+        %span.new-game__title__description
+          試合詳細
+      
+    .team-tab.game
+      .tab-panel
+        .group
+          %ul.tab-group
+            %li.tab.is-active 
+              試合概要
+            %li.tab
+              参加メンバー
+            %li.tab
+              参加未確認メンバー
+          .panel-group
+            .panel.is-show
+              .game-box-wrapper
+                .game-box
+                  .game-box__left
+                    対戦相手
+                  .game-box__right
+                    = @game.opponent
+                .game-box
+                  .game-box__left
+                    日にち
+                  .game-box__right
+                    = @game.date.month
+                    %span /
+                    = @game.date.day
+                    %span (
+                    = %w(日 月 火 水 木 金 土)[@game.date.wday]
+                    %span ) 
+                .game-box
+                  .game-box__left
+                    時間
+                  .game-box__right
+                    = @game.time.strftime(' %H:%M')
+                .game-box
+                  .game-box__left
+                    場所
+                  .game-box__right
+                    = @game.place
+            .panel
+              .game-box-wrapper
+                %h2 
+                  参加メンバー
+                  %span
+                    = @notyet_players.count 
+                    名
+                .game-box
+                  .game-box__left
+                  .game-box__right
+                    - @notyet_players.each do |player|
+                      - player = player.user 
+                      = player.name
+            .panel
+              .game-box-wrapper
+                %h2 
+                  参加未確認メンバー
+                  %span
+                    = @notyet_players.count 
+                    名
+                .game-box
+                  .game-box__left
+                  .game-box__right
+                    - @notyet_players.each do |player|
+                      - player = player.user 
+                      = player.name
+
+
+      
+        
