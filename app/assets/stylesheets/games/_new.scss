@@ -1,0 +1,49 @@
+.new-game{
+  &__title{
+    width: 70%;
+    margin: 0 auto 50px auto; 
+    font-size: 50px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid $cDeepBlue;
+    &__description{
+      font-size: 25px;
+    }
+  }
+  & .field{
+    margin: 20px 0px;
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+    & label{
+      font-size: 1.3em;
+    }
+    & .input-form{
+      border: 1px solid $cDeepBlue;
+      border-radius: 2px;
+      padding: 10px 50px;
+      font-size: 1.2em;
+    }
+    & #game_date{
+      padding: 10px 67px;
+    }
+    & #game_time{
+      padding: 10px 110px;
+    }
+    & .sign-btn{
+      width: 311px;
+      padding: 10px 0px;
+      background-color: $cDeepBlue;
+      color: white;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      border: 1px solid $cDeepBlue;
+      font-size: 1.2em;
+      margin-top: 15px;
+
+      &:hover{
+        background-color: $cLightBlue;
+        color: $cDeepBlue;
+      }
+    }
+  }
+}
