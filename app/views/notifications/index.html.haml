@@ -1,9 +1,16 @@
-%h3.classtext-center
-  通知
-- if @notifications.exists? 
-  .users-index
-    = render partial: "notifications", locals: { notifications: @notifications }
-- else
-  %p 通知はありません
+= render partial: "teams/create_gamebtn", locals: { team: @team }
+.main-wrapper
+  = render partial: "teams/sidebar", locals: { team: @team }
+  %main
+    .new-game
+      %h2.new-game__title 
+        Notice
+        %br
+        %span.new-game__title__description
+          通知
+      - if @all_notifications.exists?
+        = render partial: "notifications", locals: { notifications: @all_notifications }
+      - else
+        %p 通知はありません
 
 

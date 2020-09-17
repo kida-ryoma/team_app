@@ -1,16 +1,28 @@
-= form_with model: @game, url:team_games_path(@team) , class: "Box", local: true do |f|
-  .signup
-    .signup__name
-    = f.label :date, class: "signUpForm__label"
-    = f.date_select :date, class: 'form-control'
-    .signup__email
-    = f.label :time, class: "signUpForm__label"
-    = f.time_select :time, placeholder: "PC・携帯どちらでも可", class: "signupForm1"
-    .signup__password
-    = f.label :opponent, class: "signUpForm__label"
-    = f.text_field :opponent, placeholder: "", class: "signUpPassword1"
-    .signUpPassWord
-    = f.label :place, class: "signUpForm__label"
-    = f.text_field :place, placeholder: "", class: "signUpPassword1"
-    %span.infoText__span
-    = f.submit "次へ進む", class: "signUpBtn"
+.main-wrapper
+  = render partial: "teams/sidebar", locals: { team: @team }
+  %main
+    .new-game
+      %h2.new-game__title 
+        Add new Game
+        %br
+        %span.new-game__title__description
+          試合を追加しましょう
+      = form_with model: @game, url:team_games_path(@team) , class: "Box", local: true do |f|
+        .field
+          = f.label :日にち
+          %br/
+          = f.date_field :date, class: "input-form"
+        .field
+          = f.label :時間
+          %br/
+          = f.time_field :time, class: "input-form"
+        .field
+          = f.label :対戦相手
+          %br/
+          = f.text_field :opponent, class: "input-form"
+        .field
+          = f.label :場所
+          %br/
+          = f.text_field :place, class: "input-form"
+        .field
+          = f.submit "試合を追加する", class: "sign-btn"

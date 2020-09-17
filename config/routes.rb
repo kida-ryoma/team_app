@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'homes/index'
   root "homes#index"
   resources :teams do
+    resources :notifications, only: :index
     resources :games
     member do
       get "main"
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :notifications, only: :index
 
 end
 

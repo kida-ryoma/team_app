@@ -1,30 +1,30 @@
 .main-wrapper.login
   = render partial: "homes/login_sidebar"
   %main
-    -# = image_tag "A6.png", class: "logo"
-    %h2.login__title 
-      Create your Team
-      %br
-      %span.login__title__description
-        あなたのチームを登録しましょう
-    まずは選手としてのあなたを登録しましょう
-    = form_with model: @user, url:users_registrations_admin_create_path , class: "Box", local: true do |f|
-      .signup
-        .signup__name
-        = f.label :name, class: "signUpForm__label"
-        = f.text_field :name, class: "signupForm1", placeholder: "例) メルカリ太郎"
-        .signup__email
-        = f.label :email, class: "signUpForm__label"
-        = f.email_field :email, placeholder: "PC・携帯どちらでも可", class: "signupForm1"
-        .signup__password
-        = f.label :password, class: "signUpForm__label"
-        = f.password_field :password, placeholder: "7文字以上の半角英数字", class: "signUpPassword1"
-        %span.infoText__span
-          ※英字と数字の両方を含めて設定してください
-        .signUpPassWord
-        = f.label :password_confirmation, "パスワード確認", class: "signUpForm__label"
-        %span.signUpPassWord__span
-          必須
-        = f.password_field :password_confirmation, placeholder: "上記と同じパスワードを入力してください", class: "signUpPassword1"
-        %span.infoText__span
-        = f.submit "次へ進む", class: "signUpBtn"
+    .login__wrapper
+      %h2.login__title 
+        Sign up as a Player
+        %br
+        %span.login__title__description
+          まずはあなたを選手を登録しましょう
+          %br/
+          今作成したチームの管理権限を持った選手として登録されます
+      = form_with model: @user, url:users_registrations_admin_create_path , local: true do |f|
+        .field
+          = f.label :name
+          %br/
+          = f.text_field :name, class: "input-form"
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, class: "input-form"
+        .field
+          = f.label :password
+          %br/
+          = f.password_field :password, class: "input-form"
+        .field
+          = f.label :password_confirmation
+          %br/
+          = f.password_field :password_confirmation, class: "input-form"
+        .field
+          = f.submit "登録する", class:"sign-btn", id: "sign-btn"

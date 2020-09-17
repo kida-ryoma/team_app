@@ -12,7 +12,7 @@
         -if unchecked_notifications.any?
           %span
             %i.fa.fa-circle
-        = link_to "Notice", notifications_path
+        = link_to "Notice", team_notifications_path(team.id)
       %li
         = link_to "DM", ""
       %li 

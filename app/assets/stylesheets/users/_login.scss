@@ -31,6 +31,16 @@
         padding: 10px 50px;
         font-size: 1.2em;
       }
+      & #img-form{
+        padding: 10px 0px;
+        font-size: 1em;
+        border: none;
+        border-radius: 0px;
+        width: 311px;
+      }
+    }
+    #img-field{
+      margin: 40px 0px;
     }
     .sign-btn{
       width: 311px;
@@ -42,6 +52,21 @@
       border: 1px solid $cDeepBlue;
       font-size: 1.2em;
 
+      &:hover{
+        background-color: $cLightBlue;
+        color: $cDeepBlue;
+      }
+    }
+    #sign-btn{
+      width: 311px;
+      padding: 10px 0px;
+      background-color: $cDeepBlue;
+      color: white;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+      border: 1px solid $cDeepBlue;
+      font-size: 1.2em;
+      margin-top: 20px;
       &:hover{
         background-color: $cLightBlue;
         color: $cDeepBlue;

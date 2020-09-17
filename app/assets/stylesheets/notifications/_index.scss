@@ -1,0 +1,12 @@
+.notice__box{
+  border-bottom: 1px solid $cGray;
+  padding: 10px 0px;
+  width: 40%;
+  margin: 0 auto;
+  & p{
+    font-size: $sFontS;
+  }
+  &__info{
+    font-size: $sFontM !important;
+  }
+}

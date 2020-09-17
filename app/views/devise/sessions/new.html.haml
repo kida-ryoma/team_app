@@ -4,6 +4,9 @@
     .login__wrapper
       %h2.login__title 
         Log in
+        %br
+        %span.login__title__description
+          ログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
           = f.label :email
