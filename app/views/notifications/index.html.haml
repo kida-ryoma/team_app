@@ -1,4 +1,5 @@
-= render partial: "teams/create_gamebtn", locals: { team: @team }
+- if current_user.admin?
+  = render partial: "teams/create_gamebtn", locals: { team: @team }
 .main-wrapper
   = render partial: "teams/sidebar", locals: { team: @team }
   %main
