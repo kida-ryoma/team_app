@@ -1,18 +1,23 @@
 = render partial: "create_gamebtn", locals: { team: @team }
+.main-wrapper
+  = render partial: "sidebar", locals: { team: @team }
+  %main
+    .new-game
+      %h2.new-game__title 
+        Edit your Team
+        %br
+        %span.new-game__title__description
+          チームを編集しましょう
+      = form_with model: @team, url:team_path , class: "Box", local: true do |f|
+        .field
+          = f.label :チーム名
+          %br/
+          = f.text_field :name, class: "input-form"
+        .field
+          = f.label :エンブレム
+          %br/
+          = f.file_field :time, class: "input-form", id: "img-form"
+        .field
+          = f.submit "編集を保存する", class: "sign-btn"
 
-あなたのチームを編集しましょう
--if user_signed_in?
-  ログイン済み
-- else
-  %p ログアウトしてるで？
-  
-= form_with model: @team, url:team_path , class: "Box", local: true do |f|
-  .signup
-    .signup__name
-    = f.label :name, class: "signUpForm__label"
-    = f.text_field :name, class: "signupForm1", placeholder: "例) メルカリ太郎"
-    = f.label :image, class: "signUpForm__label"
-    = f.file_field :image, class: "signupForm1"
-    = f.submit "次へ進む", class: "signUpBtn"
-
-= link_to "メンバーを招待する", put_mail_team_path(@team.id)
+      = link_to "選手登録はこちら", put_mail_team_path(@team.id), class: "sign-btn"
