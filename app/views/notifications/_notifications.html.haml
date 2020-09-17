@@ -1,8 +1,20 @@
+
 - notifications.each do |notification|
   - visitor = notification.visitor
   - visited = notification.visited
-
-  = visitor.name
-  = visited.name
-  = notification.action
-  = notification.game.opponent
+  .notice__box
+    %p
+      下記の試合が追加されました
+    %p.notice__box__info
+      = notification.game.date.month
+      %span /
+      = notification.game.date.day
+      %span (
+      = %w(日 月 火 水 木 金 土)[notification.game.date.wday]
+      %span ) 
+      &emsp;
+      = notification.game.time.strftime(' %H:%M')
+      &emsp;
+      = notification.game.opponent
+      &emsp;
+      = notification.game.place
