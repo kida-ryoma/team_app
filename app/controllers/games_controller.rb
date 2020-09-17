@@ -11,6 +11,7 @@ class GamesController < ApplicationController
     @game.update(team_id: @team.id)
     users = User.where(team_id: @team.id) 
     users.each do |user|
+      GamesUser.create(user_id: user.id, game_id: @game.id)
       @game.create_notification_new_game!(current_user, user.id)
     end
     redirect_to main_team_path(@team.id)
