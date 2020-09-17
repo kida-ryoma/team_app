@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :teams do
     resources :notifications, only: :index
-    resources :games
+    resources :games do
+      resources :games_users, only: [:edit, :update]
+    end
     member do
       get "main"
       get "add_user"
