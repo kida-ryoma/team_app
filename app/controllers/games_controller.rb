@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_team
+  before_action :if_not_admin
   def new
     @game = Game.new
     @users = User.where(team_id: @team.id)

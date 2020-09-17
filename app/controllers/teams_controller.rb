@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   # before_action :authenticate_user!
   before_action :set_user
+  before_action :if_not_admin ,only: [:edit, :put_mail, :send_mail, :update]
 
   def main
     @team = Team.find(params[:id])
