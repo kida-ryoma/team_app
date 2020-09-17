@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   resources :teams do
     resources :notifications, only: :index
     resources :games do
-      resources :games_users, only: [:edit, :update]
+      resources :games_users, only: [:edit, :update] do
+        member do
+          patch "update_no"
+        end
+      end
     end
     member do
       get "main"
@@ -33,12 +37,12 @@ Rails.application.routes.draw do
 end
 
 def devise_scope(scope)
-      constraint = lambda do |request|
-        request.env["devise.mapping"] = Devise.mappings[scope]
-        true
-      end
+  constraint = lambda do |request|
+    request.env["devise.mapping"] = Devise.mappings[scope]
+    true
+  end
 
-      constraints(constraint) do
-        yield
-      end
-    end
+  constraints(constraint) do
+    yield
+  end
+end

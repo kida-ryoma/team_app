@@ -1,2 +1,2 @@
-%h1 GamesUsers#edit
-%p Find me in app/views/games_users/edit.html.haml
+= link_to "参加する", team_game_games_user_path(@team.id,@game.id,@games_user.id), method: :patch
+= link_to "参加しない", update_no_team_game_games_user_path(@team.id,@game.id,@games_user.id), method: :patch
