@@ -7,6 +7,9 @@
     border-bottom: 1px solid $cDeepBlue;
     &__description{
       font-size: 25px;
+      &__details{
+        font-size: $sFontM;
+      }
     }
   }
   & .field{
