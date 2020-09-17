@@ -1,6 +1,11 @@
 class GamesController < ApplicationController
   before_action :set_team
-  before_action :if_not_admin
+  before_action :if_not_admin, except: [:index, :show]
+
+  def index
+    @games = Game.where(team_id: @team.id)
+  end
+
   def new
     @game = Game.new
     @users = User.where(team_id: @team.id)
@@ -18,6 +23,11 @@ class GamesController < ApplicationController
   end
 
   def show
+    @game = Game.find(params[:id])
+    @players = GamesUser.includes(:user).where(game_id: @game.id, status: "yes")
+    @not_going_players = GamesUser.includes(:user).where(game_id: @game.id, status: "no")
+    @notyet_players = GamesUser.includes(:user).where(game_id: @game.id, status: "notyet")
+    # binding.pry
   end
 
   def edit
