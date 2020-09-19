@@ -1,2 +1,6 @@
-%h1 User#show
-%p Find me in app/views/user/show.html.haml
+- if current_user.admin?
+  = render partial: "create_gamebtn", locals: { team: @team }
+.main-wrapper
+  = render partial: "sidebar", locals: { team: @team }
+  %main
+    .main-container
