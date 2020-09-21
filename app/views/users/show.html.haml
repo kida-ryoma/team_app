@@ -4,3 +4,31 @@
   = render partial: "teams/sidebar", locals: { team: @team }
   %main
     .main-container
+      .new-game
+        %h2.new-game__title 
+          My Page
+          %br
+          %span.new-game__title__description
+            プロフィール
+        .team-tab
+          .tab-panel
+            .group
+              %ul.tab-group
+                %li.tab.is-active 
+                  プロフィール
+                %li.tab
+                  成績
+                %li.tab
+                  参加する試合
+                %li.tab
+                  参加可否未決定試合
+              .panel-group
+                .panel.is-show
+                  .panel__profile
+                .panel
+                  .panel__players
+                .panel
+                  .panel__date
+                .panel
+                  .panel__result
+                    
