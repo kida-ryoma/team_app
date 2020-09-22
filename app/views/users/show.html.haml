@@ -46,5 +46,5 @@
                           = games_user.game.opponent
                           &emsp;
                         .panel-box__right
-                          = link_to "参加する", team_game_games_user_path(@team.id,games_user.game_id,games_user.id), method: :patch
-                          = link_to "参加しない", update_no_team_game_games_user_path(@team.id,games_user.game_id,games_user.id), method: :patch
+                          = link_to "参加する", team_game_games_user_path(@team.id,games_user.game_id,games_user.id), class: "participate-btn",method: :patch
+                          = link_to "参加しない", update_no_team_game_games_user_path(@team.id,games_user.game_id,games_user.id),class: "participate-btn", method: :patch
