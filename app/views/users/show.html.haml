@@ -31,4 +31,20 @@
                   .panel__date
                 .panel
                   .panel__result
-                    
+                    - @games_users.each do |games_user|
+                      .panel-box
+                        .panel-box__left
+                          = games_user.game.date.month
+                          %span /
+                          = games_user.game.date.day
+                          %span (
+                          = %w(日 月 火 水 木 金 土)[games_user.game.date.wday]
+                          %span ) 
+                          &emsp;
+                          = games_user.game.time.strftime(' %H:%M')
+                          &emsp;
+                          = games_user.game.opponent
+                          &emsp;
+                        .panel-box__right
+                          = link_to "参加する", team_game_games_user_path(@team.id,games_user.game_id,games_user.id), method: :patch
+                          = link_to "参加しない", update_no_team_game_games_user_path(@team.id,games_user.game_id,games_user.id), method: :patch
