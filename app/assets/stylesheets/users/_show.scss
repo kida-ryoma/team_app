@@ -2,7 +2,7 @@
   & .panel-box{
     display: flex;
     justify-content: space-around;
-    margin: 0 auto;
+    margin: 0 auto 15px auto;
     border-bottom: 1px solid $cGray;
     padding: 10px 0px;
     width: 70%;
@@ -10,6 +10,8 @@
       display: flex;
       align-items: center; 
       justify-content: center;
+      font-size: $sFontM;
+      font-weight: bold;
     }
     &__right{
       .participate-btn{
@@ -18,8 +20,9 @@
         padding: 7px 12px;
         background-color: white;
         color: $cDeepBlue;
+        border: 1px solid $cDeepBlue;
         transition: all 0.3s ease;
-        border-radius: 5px;
+        border-radius: 3px;
         margin-right: 25px;
         &:hover{
           background-color: $cDeepBlue;
