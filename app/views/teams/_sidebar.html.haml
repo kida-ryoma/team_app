@@ -7,7 +7,7 @@
       %li
         = link_to "Home", main_team_path(team.id)
       %li
-        = link_to "Mypage", ""
+        = link_to "Mypage", user_path(current_user.id)
       %li
         -if unchecked_notifications.any?
           %span

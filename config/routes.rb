@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'games_users/edit'
-  get 'games_users/update'
-  get 'games/new'
-  get 'games/create'
-  get 'games/show'
-  get 'games/edit'
-  get 'games/update'
   devise_for :users, controllers:{
     registrations: "users/registrations"
   }
@@ -15,6 +8,7 @@ Rails.application.routes.draw do
   end
   get 'homes/index'
   root "homes#index"
+  resources :users, only: :show
   resources :teams do
     resources :notifications, only: :index
     resources :games do
@@ -32,7 +26,6 @@ Rails.application.routes.draw do
       get "put_mail"
     end
   end
-
 
 end
 
