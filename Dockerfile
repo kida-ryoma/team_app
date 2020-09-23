@@ -7,12 +7,12 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs yarn
 
-WORKDIR /myapp
+WORKDIR /team_app
 COPY Gemfile ./Gemfile
 COPY Gemfile.lock ./Gemfile.lock
 RUN gem install bundler
 RUN bundle install
-COPY . /myapp
+COPY . /team_app
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
