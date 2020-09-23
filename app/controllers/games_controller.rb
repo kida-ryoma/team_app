@@ -24,10 +24,9 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @players = GamesUser.includes(:user).where(game_id: @game.id, status: "yes")
-    @not_going_players = GamesUser.includes(:user).where(game_id: @game.id, status: "no")
-    @notyet_players = GamesUser.includes(:user).where(game_id: @game.id, status: "notyet")
-    # binding.pry
+    @going_players = GamesUser.eager_load(:user,:game).where(game_id: @game.id, status: "yes")
+    @not_going_players = GamesUser.eager_load(:user,:game).where(game_id: @game.id, status: "no")
+    @notyet_players = GamesUser.eager_load(:user,:game).where(game_id: @game.id, status: "notyet")
   end
 
   def edit

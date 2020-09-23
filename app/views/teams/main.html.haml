@@ -6,22 +6,30 @@
     .main-container
       .box.next-game
         %h2.box__header
-          = "#{@team.name}の次の試合"
+          = link_to team_game_path(@team.id, @latest_game.id) do
+            = "#{@team.name}の次の試合"
         .next-game__opponent.mini-box
-          .next-game__left　対戦相手
-          .next-game__right　セレッソ大阪
+          .next-game__left
+            対戦相手
+          .next-game__right 
+            = @latest_game.opponent
         .next-game__date.mini-box
-          .next-game__left  日にち
-          .next-game__right　2020年09月26日
-        .next-game__time.mini-box
-          .next-game__left　時間
-          .next-game__right　09:00 ~ 12:00
-        .next-game__place.mini-box
-          .next-game__left 場所
+          .next-game__left  
+            日にち
           .next-game__right
-            J-GREEN境
-            .next-game__right__details
-              〒590-0132 大阪府堺市南区原山台５丁１３−４３
+            = @latest_game.date
+        .next-game__time.mini-box
+          .next-game__left
+            時間
+          .next-game__right
+            = @latest_game.time
+        .next-game__place.mini-box
+          .next-game__left 
+            場所
+          .next-game__right
+            = @latest_game.place
+            -# .next-game__right__details
+            -#   〒590-0132 大阪府堺市南区原山台５丁１３−４３
       .box.calendar
         ここにカレンダーが入ります
       .box.confirmation

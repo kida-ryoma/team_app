@@ -15,9 +15,7 @@
             %li.tab.is-active 
               試合概要
             %li.tab
-              参加メンバー
-            %li.tab
-              参加未確認メンバー
+              出欠確認
           .panel-group
             .panel.is-show
               .game-box-wrapper
@@ -49,29 +47,39 @@
             .panel
               .game-box-wrapper
                 %h2 
-                  参加メンバー
                   %span
-                    = @notyet_players.count 
+                    参加者
+                    = @going_players.count 
                     名
                 .game-box
                   .game-box__left
+                    参加者
                   .game-box__right
-                    - @notyet_players.each do |player|
-                      - player = player.user 
-                      = player.name
-            .panel
-              .game-box-wrapper
-                %h2 
-                  参加未確認メンバー
-                  %span
-                    = @notyet_players.count 
-                    名
                 .game-box
                   .game-box__left
+                    - @going_players.each do |player|
+                      = player.user.name
                   .game-box__right
+                .game-box
+                  .game-box__left
+                    欠席者
+                  .game-box__right
+                .game-box
+                  .game-box__left
+                    - @not_going_players.each do |player|
+                      = player.user.name
+                  .game-box__right
+                .game-box
+                  .game-box__left
+                    未提出者
+                  .game-box__right
+                .game-box
+                  .game-box__left
                     - @notyet_players.each do |player|
-                      - player = player.user 
-                      = player.name
+                      = player.user.name
+                  .game-box__right
+
+
 
 
       
