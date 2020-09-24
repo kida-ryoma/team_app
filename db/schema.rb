@@ -77,5 +77,4 @@ ActiveRecord::Schema.define(version: 2020_09_17_070321) do
   add_foreign_key "games", "teams"
   add_foreign_key "games_users", "games"
   add_foreign_key "games_users", "users"
-  add_foreign_key "users", "teams"
 end
