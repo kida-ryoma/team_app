@@ -53,10 +53,13 @@ class TeamsController < ApplicationController
 
   def create_user
     @team = Team.find(params[:id])
-    @user = User.create(user_params)
-    @user.update(team_id: @team.id)
-    sign_in(:user, @user)
-    redirect_to main_team_path(@team.id)
+    if  @user = User.create(user_params)
+      @user.update(team_id: @team.id)
+      sign_in(:user, @user)
+      redirect_to main_team_path(@team.id)
+    else
+      redirect_to add_user_team_path(@team.id)
+    end
   end
 
   def update
