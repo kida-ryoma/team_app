@@ -9,14 +9,19 @@ class GamesUsersController < ApplicationController
   end
 
   def update
-    @games_user.update(status: "yes")
-    redirect_to main_team_path(@team.id)
-    
+    if @games_user.update(status: "yes")
+      redirect_to main_team_path(@team.id)
+    else
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update_no
-    @games_user.update(status: "no")
-    redirect_to main_team_path(@team.id)
+    if  @games_user.update(status: "no")
+      redirect_to main_team_path(@team.id)
+    else
+      redirect_to user_path(current_user.id)
+    end
   end
 
   private
