@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :set_team
-  before_action :authenticate_user!
+  before_action :authenticate
 
   def index
     @all_notifications = current_user.passive_notifications

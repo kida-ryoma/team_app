@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_team
   before_action :set_games_users
-  before_action :authenticate_user!
+  before_action :authenticate
 
   def show
   end
