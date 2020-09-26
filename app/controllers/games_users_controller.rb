@@ -2,6 +2,8 @@ class GamesUsersController < ApplicationController
   before_action :set_team
   before_action :set_game
   before_action :set_games_user
+  before_action :authenticate_user!
+
 
   def edit
   end

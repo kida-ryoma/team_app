@@ -1,5 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :set_team
+  before_action :authenticate_user!
+
   def index
     @all_notifications = current_user.passive_notifications
     @all_notifications.where(checked: false).each do |notification|
