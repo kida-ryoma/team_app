@@ -65,11 +65,12 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    if @team.update(team_params)
-      redirect_to main_team_path(@team)
-    else
-      redirect_to edit_team_path(@team.id)
+    @team.update(team_params)
+    unless @team.valid?
+      flash.now[:alert] = @team.errors.full_messages
+      render :edit and return
     end
+    redirect_to main_team_path(@team)
   end
 
 
