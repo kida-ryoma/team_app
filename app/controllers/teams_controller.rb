@@ -37,10 +37,13 @@ class TeamsController < ApplicationController
   end
 
   def send_mail
-    @email = Email.create(email_params)
-    @team = Team.find(params[:id])
-    RegistrationMailer.registration_mail(@team,@email).deliver_now
-    redirect_to main_team_path(@team.id)
+    if  @email = Email.create(email_params)
+      @team = Team.find(params[:id])
+      RegistrationMailer.registration_mail(@team,@email).deliver_now
+      redirect_to main_team_path(@team.id)
+    else
+      redirect_to put_mail_team_path(@team.id)
+    end
   end
 
   def add_user
