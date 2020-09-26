@@ -7,7 +7,6 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     #今日以降で直近のGameレコードを一つ取得
     @latest_game = Game.where('team_id = ? and date >= ? ', @team.id, Date.today).order(date: "ASC").limit(1)[0]
-    # binding.pry
   end
 
   def new
@@ -15,9 +14,12 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create(team_params)
-    session["team"] = @team.attributes
-    redirect_to users_registrations_admin_signup_path
+    if  @team = Team.create(team_params)
+      session["team"] = @team.attributes
+      redirect_to users_registrations_admin_signup_path
+    else
+      redirect_to root_path
+    end
   end
 
   def show
