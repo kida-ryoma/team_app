@@ -11,7 +11,7 @@ class GamesUsersController < ApplicationController
   def update
     @games_user.update(status: "yes")
     redirect_to main_team_path(@team.id)
-
+    
   end
 
   def update_no
