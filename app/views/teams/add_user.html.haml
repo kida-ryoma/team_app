@@ -1,4 +1,6 @@
 = form_with model: @user, url:create_user_team_path(@team.id) , class: "Box", local: true do |f|
+  = render partial: "teams/shared/error_messages", locals: { user: @user }
+
   .signup
     .signup__name
     = f.label :name, class: "signUpForm__label"

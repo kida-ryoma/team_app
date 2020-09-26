@@ -53,13 +53,14 @@ class TeamsController < ApplicationController
 
   def create_user
     @team = Team.find(params[:id])
-    if  @user = User.create(user_params)
-      @user.update(team_id: @team.id)
-      sign_in(:user, @user)
-      redirect_to main_team_path(@team.id)
-    else
-      redirect_to add_user_team_path(@team.id)
+    @user = User.create(user_params)
+    @user.update(team_id: @team.id)
+    unless @user.valid?
+      flash.now[:alert] = @user.errors.full_messages
+      render :add_user and return
     end
+    sign_in(:user, @user)
+    redirect_to main_team_path(@team.id)
   end
 
   def update
