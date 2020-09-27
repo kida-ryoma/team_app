@@ -2,19 +2,28 @@ class GamesUsersController < ApplicationController
   before_action :set_team
   before_action :set_game
   before_action :set_games_user
+  before_action :authenticate
+
 
   def edit
   end
 
   def update
     @games_user.update(status: "yes")
-    redirect_to main_team_path(@team.id)
-
+    unless @games_user.valid?
+      flash.now[:alert] = @games_user.errors.full_messages
+      render 'users/show' and return
+    end
+    redirect_to user_path(current_user.id)
   end
 
   def update_no
     @games_user.update(status: "no")
-    redirect_to main_team_path(@team.id)
+    unless @games_user.valid?
+      flash.now[:alert] = @games_user.errors.full_messages
+      render 'users/show' and return
+    end
+    redirect_to user_path(current_user.id)
   end
 
   private

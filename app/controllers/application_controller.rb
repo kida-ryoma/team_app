@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
     redirect_to main_team_path(current_user.team_id) unless current_user.admin?
   end
 
+  def authenticate
+    redirect_to root_path unless user_signed_in?
+  end
+
 end

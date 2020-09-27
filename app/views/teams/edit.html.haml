@@ -10,6 +10,7 @@
         %span.new-game__title__description
           チームを編集しましょう
       = form_with model: @team, url:team_path , class: "Box", local: true do |f|
+        = render partial: "teams/shared/team_error_messages", locals: { team: @team }
         .field
           = f.label :チーム名
           %br/

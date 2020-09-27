@@ -1,5 +1,11 @@
 class Game < ApplicationRecord
-  belongs_to :team
+
+  validates :opponent, presence: true
+  validates :date, presence: true
+  validates :time, presence: true
+  validates :place, presence: true
+
+  belongs_to :team, optional: true
   has_many :games_users
   has_many :users, through: :games_users
   has_many :notifications, dependent: :destroy

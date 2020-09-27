@@ -1,0 +1,8 @@
+-if user.errors.any? 
+  #error_explanation{ class: "devise-alert", style: "background-color:#F8D7DA; padding:20px; margin-bottom:10px;" } 
+    %h2
+    %ul
+      - user.errors.full_messages.each do |message|
+        %li
+          = message
+    

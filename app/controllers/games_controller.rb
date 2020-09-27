@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :authenticate
   before_action :set_team
   before_action :if_not_admin, except: [:index, :show]
 
@@ -14,6 +15,11 @@ class GamesController < ApplicationController
   def create
     @game = Game.create(game_params)
     @game.update(team_id: @team.id)
+    unless @game.valid?
+      flash.now[:alert] = @game.errors.full_messages
+      render :new and return
+    end
+    flash[:success] = "試合を追加しました"
     users = User.where(team_id: @team.id) 
     users.each do |user|
       GamesUser.create(user_id: user.id, game_id: @game.id)
