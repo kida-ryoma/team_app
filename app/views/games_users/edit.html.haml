@@ -1,2 +1,3 @@
+= render partial: "games_users/shared/error_messages", locals: { games_user: @games_user }
 = link_to "参加する", team_game_games_user_path(@team.id,@game.id,@games_user.id), method: :patch
 = link_to "参加しない", update_no_team_game_games_user_path(@team.id,@game.id,@games_user.id), method: :patch

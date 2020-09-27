@@ -9,19 +9,21 @@ class GamesUsersController < ApplicationController
   end
 
   def update
-    if @games_user.update(status: "yes")
-      redirect_to main_team_path(@team.id)
-    else
-      redirect_to user_path(current_user.id)
+    @games_user.update(status: "yes")
+    unless @games_user.valid?
+      flash.now[:alert] = @games_user.errors.full_messages
+      render 'users/show' and return
     end
+    redirect_to user_path(current_user.id)
   end
 
   def update_no
-    if  @games_user.update(status: "no")
-      redirect_to main_team_path(@team.id)
-    else
-      redirect_to user_path(current_user.id)
+    @games_user.update(status: "no")
+    unless @games_user.valid?
+      flash.now[:alert] = @games_user.errors.full_messages
+      render 'users/show' and return
     end
+    redirect_to user_path(current_user.id)
   end
 
   private
