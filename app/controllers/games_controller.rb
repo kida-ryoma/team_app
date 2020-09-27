@@ -13,18 +13,19 @@ class GamesController < ApplicationController
   end
 
   def create
-    if @game = Game.create(game_params)
-      @game.update(team_id: @team.id)
-      flash[:success] = "試合を追加しました"
-      users = User.where(team_id: @team.id) 
-      users.each do |user|
-        GamesUser.create(user_id: user.id, game_id: @game.id)
-        @game.create_notification_new_game!(current_user, user.id)
-      end
-      redirect_to main_team_path(@team.id)
-    else
-      redirect_to new_team_game(@team.id)
+    @game = Game.create(game_params)
+    @game.update(team_id: @team.id)
+    unless @game.valid?
+      flash.now[:alert] = @game.errors.full_messages
+      render :new and return
     end
+    flash[:success] = "試合を追加しました"
+    users = User.where(team_id: @team.id) 
+    users.each do |user|
+      GamesUser.create(user_id: user.id, game_id: @game.id)
+      @game.create_notification_new_game!(current_user, user.id)
+    end
+    redirect_to main_team_path(@team.id)
   end
 
   def show

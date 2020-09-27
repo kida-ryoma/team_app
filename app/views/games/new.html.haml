@@ -8,6 +8,7 @@
         %span.new-game__title__description
           試合を追加しましょう
       = form_with model: @game, url:team_games_path(@team) , class: "Box", local: true do |f|
+        = render partial: "games/shared/error_messages", locals: { game: @game }
         .field
           = f.label :日にち
           %br/
