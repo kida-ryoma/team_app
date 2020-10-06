@@ -53,7 +53,7 @@ test:
 #
 production:
   <<: *default
-  database: team_app_production
+  database: teamappdb
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+  host: teamappdb.c2xcsw129bql.ap-northeast-1.rds.amazonaws.com
