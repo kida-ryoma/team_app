@@ -1,24 +1,50 @@
-# README
+# TeamApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+サッカーチームのマネージャー、及びチームメンバーに向けたチーム管理を便利にするサービスです。
 
-Things you may want to cover:
+## URL
+http://www.myteamapp.net/
+【ゲストログイン】ボタンからチームを管理できる管理者権限を持ったテストユーザーとしてログインできます。
 
-* Ruby version
+## 制作の背景
+今回個人アプリを開発するにあたり、「身近な人の困りごとを解決したい」、「より実務に近づいた形で開発をしたい」と考え、近しい友人に最近の困りごとを聞き出し彼にクライアントになってもらう形を取りました。彼は会社のサッカーチームのマネージャーとそのチームが所属するリーグの管理者をしていますが、出欠や結果報告などの管理が大変さに困っていて、それを解決したい、との事でした。調べてみると、サッカー専門のリーグ・チーム管理サービスはそんなに無い様で、これならより作りがいのあるWebサービスになると確信しこのサービスを制作しました。現状はチームの管理機能に留まっていますが、リーグまで一元管理できる機能を追加するべく開発を進めています。
 
-* System dependencies
+## 主な利用シーン
+【マネージャー側】
+・サッカーチームのマネージャー（チームメンバーとしての機能も使用可能）として、決定事項の記録、参加者への情報共有をしたい時
+・所属するチームの試合が多数あり、それぞれの出欠管理をしたい時
 
-* Configuration
+【チームメンバー側】
+・試合の情報（日時・場所など）を確認したい時
+・試合の参加可否を報告したい時
 
-* Database creation
+## 機能一覧
+・ユーザー機能
+・チーム登録・編集機能
+・メンバー追加機能
+・管理者機能
+・試合追加機能
+・試合出欠管理機能
+・通知機能
+  ○試合が追加された時に通知が来る
+・メール機能
+  ○マネージャーがチームにメンバーを招待したい時にメールを送る
 
-* Database initialization
+## 環境・使用技術
+### フロントエンド
+・SCSS(BEM)
+・Javascript
 
-* How to run the test suite
+### バックエンド
+・Ruby 2.6.5
+・Rails 6.0.3.2
 
-* Services (job queues, cache servers, search engines, etc.)
+### 開発環境
+・Docker/Docker-compose
+・MySQL
 
-* Deployment instructions
-
-* ...
+### 本番環境
+・AWS(EC2, RDS for MariaDB, Route53, S3)
+・MariaDB
+・Nginx、 Puma
