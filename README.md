@@ -2,6 +2,7 @@
 
 ## 概要
 サッカーチームのマネージャー、及びチームメンバーに向けたチーム管理を便利にするサービスです。
+![](https://i.gyazo.com/98e4e1bc508411eabb5900013e1f4a8c.png)
 
 ## URL
 http://www.myteamapp.net/  
@@ -50,3 +51,5 @@ http://www.myteamapp.net/
 ・AWS(EC2, RDS for MariaDB, Route53, S3)  
 ・MariaDB  
 ・Nginx、 Puma  
+
+## 今後実装したい機能
