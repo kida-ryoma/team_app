@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/registrations/admin_signup' => 'users/registrations#admin_new'
     post "users/registrations/admin_create" => "users/registrations#admin_create"
+    post "users/guest_sign_in", to: "users/sessions#new_guest"
   end
   get 'homes/index'
   root "homes#index"
