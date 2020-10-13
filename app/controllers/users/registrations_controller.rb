@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @team = Team.find(session["team"]["id"])
     @user.update(admin: 1, team_id: @team.id)
     @team.update(admin_user_id: @user.id)
-    a = sign_in(:user, @user)
+    sign_in(:user, @user)
     redirect_to main_team_path(@team.id)
   end
 
