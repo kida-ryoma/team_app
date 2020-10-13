@@ -68,7 +68,7 @@ http://www.myteamapp.net/
 
 ### インフラ構成図
 
-![](https://i.gyazo.com/152f38e50e59b869d57ed45eabe1bb11.png)
+![](https://i.gyazo.com/4fcdefa35adf5e692e9c4f0b9adefa66.png)
 
 ## ER図
 ![](https://i.gyazo.com/73046115157bc1c9222bec774b13cf1e.png)
