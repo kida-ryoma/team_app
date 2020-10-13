@@ -7,6 +7,7 @@
       .sign
         = link_to "チームを登録", new_team_path
         = link_to "ログイン", new_user_session_path
+        = link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post 
     .description
       .description__title
         %h1 TEAM APP をはじめよう
