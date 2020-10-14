@@ -8,7 +8,7 @@ class Team < ApplicationRecord
 
   def self.guest
     find_or_create_by!(name: "RailsFC") do |team|
-      team.image = "rails.png"
+      team.image = File.open("app/assets/images/rails.png")
     end
   end
 end
