@@ -75,3 +75,5 @@ gem "carrierwave"
 gem "mini_magick"
 
 gem "fog-aws"
+
+gem "simple_calendar", "~> 2.0"
