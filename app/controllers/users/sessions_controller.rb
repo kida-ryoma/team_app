@@ -21,8 +21,8 @@ class Users::SessionsController < Devise::SessionsController
   def new_guest
     team = Team.guest
     user = User.guest
-    user.update!(team_id: team.id)
-    team.update!(admin_user_id: user.id)
+    user.update_attributes!(team_id: team.id)
+    team.update_attributes!(admin_user_id: user.id)
     sign_in user
     redirect_to main_team_path(user.team_id), notice: "ゲストユーザーとしてログインしました"
   end
