@@ -2,7 +2,8 @@ class Game < ApplicationRecord
 
   validates :opponent, presence: true
   validates :date, presence: true
-  validates :time, presence: true
+  validates :begin_time, presence: true
+  validates :finish_time, presence: true
   validates :place, presence: true
 
   belongs_to :team, optional: true

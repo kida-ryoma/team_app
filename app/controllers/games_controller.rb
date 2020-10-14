@@ -48,6 +48,6 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:opponent, :time, :date, :place)
+    params.require(:game).permit(:opponent, :time, :date, :begin_time, :finish_time, :place)
   end
 end
