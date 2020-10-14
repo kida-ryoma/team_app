@@ -7,6 +7,7 @@ class TeamsController < ApplicationController
   def main
     #今日以降で直近のGameレコードを一つ取得
     @latest_game = Game.where('team_id = ? and date >= ? ', @team.id, Date.today).order(date: "ASC").limit(1)[0]
+    @games = @team.games
   end
 
   def new

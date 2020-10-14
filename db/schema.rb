@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2020_09_17_070321) do
   create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "team_id"
     t.string "opponent"
-    t.date "date"
+    t.datetime "date"
+    t.datetime "begin_time"
+    t.datetime "finish_time"
     t.string "place"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

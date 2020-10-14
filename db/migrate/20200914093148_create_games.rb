@@ -3,7 +3,9 @@ class CreateGames < ActiveRecord::Migration[6.0]
     create_table :games do |t|
       t.references :team, foreign_key: true
       t.string :opponent
-      t.date :date
+      t.datetime :date
+      t.datetime :begin_time
+      t.datetime :finish_time
       t.string :place
 
       t.timestamps

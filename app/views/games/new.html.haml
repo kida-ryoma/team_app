@@ -14,9 +14,13 @@
           %br/
           = f.date_field :date, class: "input-form"
         .field
-          = f.label :時間
+          = f.label :開始時間
           %br/
-          = f.time_field :time, class: "input-form"
+          = f.time_field :begin_time, class: "input-form"
+        .field
+          = f.label :終了時間
+          %br/
+          = f.time_field :finish_time, class: "input-form"
         .field
           = f.label :対戦相手
           %br/
