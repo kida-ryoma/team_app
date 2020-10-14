@@ -1,0 +1,14 @@
+= month_calendar events: @games do |date, games|
+  = date.day
+  - games.each do |game|
+    .calendar
+      = link_to team_game_path(team.id, game.id) do
+        %p.calendar__opponent
+          = game.opponent
+        %p.calendar__place
+          ＠
+          = game.place
+        %p.calendar__time
+          = game.begin_time.to_s(:time)
+          〜
+          = game.finish_time.to_s(:time)

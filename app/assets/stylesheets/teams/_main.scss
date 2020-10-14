@@ -27,6 +27,24 @@ main{
       padding: 30px;
       margin-top: 50px;
       margin-bottom: 50px;
+      .simple-calendar{
+        .calendar-heading{
+          font-size: 30px;
+          & a{
+            text-decoration: none !important;
+          }
+        }
+        & td{
+          line-height: 18px;
+          font-size: $sFontS;
+        }
+        .calendar{
+          margin-top: 5px;
+          & a{
+            text-decoration: none !important;
+          }
+        }
+      }
     }
     .next-game{
       & .mini-box{
