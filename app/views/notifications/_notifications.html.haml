@@ -3,18 +3,41 @@
   - visitor = notification.visitor
   - visited = notification.visited
   .notice__box
+  - case notification.action
+  - when "new_game"
     %p
       下記の試合が追加されました
     %p.notice__box__info
-      = notification.game.date.month
-      %span /
-      = notification.game.date.day
-      %span (
-      = %w(日 月 火 水 木 金 土)[notification.game.date.wday]
-      %span ) 
-      &emsp;
-      = notification.game.time.strftime(' %H:%M')
-      &emsp;
-      = notification.game.opponent
-      &emsp;
-      = notification.game.place
+      = link_to team_game_path(@team.id, notification.game.id) do
+        = notification.game.date.month
+        %span /
+        = notification.game.date.day
+        %span (
+        = %w(日 月 火 水 木 金 土)[notification.game.date.wday]
+        %span ) 
+        &emsp;
+        = notification.game.begin_time.strftime(' %H:%M')
+        &emsp;
+        = notification.game.opponent
+        &emsp;
+        = notification.game.place
+  - when "remind_game"
+    %p
+      = visited.name
+      さんから以下の試合の出欠報告のリマインドが届きました
+    %p.notice__box__info
+      = link_to team_game_path(@team.id, notification.game.id) do
+        = notification.game.date.month
+        %span /
+        = notification.game.date.day
+        %span (
+        = %w(日 月 火 水 木 金 土)[notification.game.date.wday]
+        %span ) 
+        &emsp;
+        = notification.game.begin_time.strftime(' %H:%M')
+        &emsp;
+        = notification.game.opponent
+        &emsp;
+        = notification.game.place
+
+    

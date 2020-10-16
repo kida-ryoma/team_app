@@ -41,7 +41,7 @@
                           = %w(日 月 火 水 木 金 土)[games_user.game.date.wday]
                           %span ) 
                           &emsp;
-                          = games_user.game.time.strftime(' %H:%M')
+                          = games_user.game.begin_time.strftime(' %H:%M')
                           &emsp;
                           = games_user.game.opponent
                           &emsp;

@@ -30,15 +30,24 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @going_players = GamesUser.eager_load(:user,:game).where(game_id: @game.id, status: "yes")
-    @not_going_players = GamesUser.eager_load(:user,:game).where(game_id: @game.id, status: "no")
-    @notyet_players = GamesUser.eager_load(:user,:game).where(game_id: @game.id, status: "notyet")
+    @members = GamesUser.eager_load(:user, :status).where(game_id: @game.id)
+    @going_members = GamesUser.where('game_id = ? and status_id = ?', @game.id, 2) 
   end
 
   def edit
   end
 
   def update
+  end
+
+  def send_remind
+    @game = Game.find(params[:id])
+    @members = @team.users
+    @members.each do |member|
+      @game.create_notification_remind_event(current_user, member.id)
+    end
+    flash[:success] = "通知を送りました"
+    redirect_to team_game_path(@team.id, @game.id)
   end
 
   private

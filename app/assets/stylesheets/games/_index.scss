@@ -12,7 +12,6 @@
       padding: 30px;
       width: 100%;
       margin: 0 auto;
-  
     .game-box{
       display: flex;
       margin: 15px 0;
@@ -23,6 +22,25 @@
       &__right{
         width: 60%;
         font-size: $sFontL;
+      }
+      & .name{
+        font-size: $sFontM;
+      }
+      & .btn{
+        background-color: $cDeepBlue;
+        color: white;
+        border-radius: 5px;
+        background-color: $cDeepBlue;
+        width: 15%;
+        margin-left: 50%;
+      }
+      .fa-bell{
+        color: white;
+        margin-left: 10px;
+        padding: 2px 5px;
+        font-size: 1.3em;
+        border-radius: 5px;
+        background-color: $cDeepBlue;
       }
     }
   }

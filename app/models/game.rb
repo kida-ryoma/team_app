@@ -32,4 +32,15 @@ class Game < ApplicationRecord
     # 自分へは通知が作られない・届かないようにする
     notification.save if notification.visitor_id != notification.visited_id && notification.valid?
   end
+
+  # ◆通知機能（リマインド）
+  def create_notification_remind_event(current_user, visited_id)
+    notification = current_user.active_notifications.new(
+      game_id: id,
+      visited_id: visited_id,
+      action: 'remind_game'
+    )
+    # 自分へは通知が作られない・届かないようにする
+    notification.save if notification.visitor_id != notification.visited_id && notification.valid?
+  end
 end
