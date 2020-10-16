@@ -9,7 +9,7 @@ class GamesUsersController < ApplicationController
   end
 
   def update
-    @games_user.update(status: "yes")
+    @games_user.update(status: "2")
     unless @games_user.valid?
       flash.now[:alert] = @games_user.errors.full_messages
       render 'users/show' and return
@@ -18,7 +18,7 @@ class GamesUsersController < ApplicationController
   end
 
   def update_no
-    @games_user.update(status: "no")
+    @games_user.update(status_id: "3")
     unless @games_user.valid?
       flash.now[:alert] = @games_user.errors.full_messages
       render 'users/show' and return

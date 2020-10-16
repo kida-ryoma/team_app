@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def set_games_users
-    @games_users = GamesUser.includes(:game).where('user_id = ? and status = ?', current_user.id, 'notyet')
+    @games_users = GamesUser.includes(:game).where('user_id = ? and status_id = ?', current_user.id, 1)
   end
 
 end
