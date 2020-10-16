@@ -49,38 +49,19 @@
                 %h2 
                   %span
                     参加者
-                    = @going_players.count 
+                    = @going_members.count
                     名
-                .game-box
-                  .game-box__left
-                    参加者
-                  .game-box__right
-                .game-box
-                  .game-box__left
-                    - @going_players.each do |player|
-                      = player.user.name
-                  .game-box__right
-                .game-box
-                  .game-box__left
-                    欠席者
-                  .game-box__right
-                .game-box
-                  .game-box__left
-                    - @not_going_players.each do |player|
-                      = player.user.name
-                  .game-box__right
-                .game-box
-                  .game-box__left
-                    未提出者
-                  .game-box__right
-                .game-box
-                  .game-box__left
-                    - @notyet_players.each do |player|
-                      = player.user.name
-                  .game-box__right
-
-
-
-
-      
-        
+                - @members.each do |member|
+                  .game-box
+                    .game-box__left.name
+                      = member.user.name
+                    .game-box__right.btn
+                      - if member.status_id == 1
+                        未確認
+                      - if member.status_id == 2
+                        参加
+                      - if member.status_id == 3
+                        不参加
+                    - if member.status_id == 1
+                      = link_to send_remind_team_game_path(@team.id, @game.id) ,method: :post do
+                        %i.fas.fa-bell
