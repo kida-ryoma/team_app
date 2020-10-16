@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_070321) do
+ActiveRecord::Schema.define(version: 2020_09_15_080939) do
 
   create_table "emails", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email"
@@ -34,10 +34,11 @@ ActiveRecord::Schema.define(version: 2020_09_17_070321) do
   create_table "games_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "game_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "status_id", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status", default: "notyet", null: false
     t.index ["game_id"], name: "index_games_users_on_game_id"
+    t.index ["status_id"], name: "index_games_users_on_status_id"
     t.index ["user_id"], name: "index_games_users_on_user_id"
   end
 
@@ -47,6 +48,12 @@ ActiveRecord::Schema.define(version: 2020_09_17_070321) do
     t.integer "game_id", null: false
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,5 +85,6 @@ ActiveRecord::Schema.define(version: 2020_09_17_070321) do
 
   add_foreign_key "games", "teams"
   add_foreign_key "games_users", "games"
+  add_foreign_key "games_users", "statuses"
   add_foreign_key "games_users", "users"
 end
