@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :teams do
     resources :notifications, only: :index
     resources :games do
+      member do
+        post "send_remind"
+      end
       resources :games_users, only: [:edit, :update] do
         member do
           patch "update_no"
