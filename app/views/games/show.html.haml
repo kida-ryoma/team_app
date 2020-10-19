@@ -44,6 +44,10 @@
                     場所
                   .game-box__right
                     = @game.place
+              - if current_user.admin?
+                .cancel
+                  = link_to team_game_path(@team.id, @game.id) ,class: "btn", method: :delete do
+                    試合をキャンセル
             .panel
               .game-box-wrapper
                 %h2 
@@ -62,6 +66,8 @@
                         参加
                       - if member.status_id == 3
                         不参加
-                    - if member.status_id == 1
-                      = link_to send_remind_team_game_path(@team.id, @game.id) ,method: :post do
-                        %i.fas.fa-bell
+                    - if current_user.admin?
+                      - if member.status_id == 1
+                        = link_to send_remind_team_game_path(@team.id, @game.id) ,method: :post do
+                          %i.fas.fa-bell
+    

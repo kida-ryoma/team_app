@@ -6,6 +6,23 @@
   & .tab{
     width: 33%;
   }
+  & .cancel{
+    & .btn{
+      text-decoration: none;
+      background-color: $cDeepBlue;
+      color: white;
+      border-radius: 5px;
+      width: 100%;
+      padding: 7px 0px;
+      display: block;
+      margin-top: 20px;
+      &:hover{
+        color: $cDeepBlue;
+        background-color: white;
+        
+      }
+    }
+  }
   .game-box-wrapper{
     background-color: white;
       border-radius: 10px;
