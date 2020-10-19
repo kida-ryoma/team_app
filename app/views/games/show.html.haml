@@ -47,7 +47,10 @@
               - if current_user.admin?
                 .cancel
                   = link_to team_game_path(@team.id, @game.id) ,class: "btn", method: :delete do
-                    試合をキャンセル
+                    試合をキャンセルする
+                .cancel
+                  = link_to edit_team_game_path(@team.id, @game.id) ,class: "btn" do
+                    試合情報を編集する
             .panel
               .game-box-wrapper
                 %h2 
