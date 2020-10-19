@@ -9,7 +9,6 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
-    @users = User.where(team_id: @team.id)
   end
 
   def create
@@ -35,9 +34,13 @@ class GamesController < ApplicationController
   end
 
   def edit
+    @game = Game.find(params[:id])
   end
 
   def update
+    @game = Game.find(params[:id])
+    @game.update(game_params)
+    redirect_to team_game_path(@team.id, @game.id)
   end
 
   def destroy
