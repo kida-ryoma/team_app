@@ -40,11 +40,18 @@ class GamesController < ApplicationController
   def update
   end
 
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    flash[:success] = "試合が削除されました"
+    redirect_to main_team_path(@team.id)
+  end
+
   def send_remind
     @game = Game.find(params[:id])
     @members = @team.users
     @members.each do |member|
-      @game.create_notification_remind_event(current_user, member.id)
+      @game.create_notification_remind_game(current_user, member.id)
     end
     flash[:success] = "通知を送りました"
     redirect_to team_game_path(@team.id, @game.id)
