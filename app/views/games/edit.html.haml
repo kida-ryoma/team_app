@@ -1,2 +1,33 @@
-%h1 Games#edit
-%p Find me in app/views/games/edit.html.haml
+.main-wrapper
+  = render partial: "teams/sidebar", locals: { team: @team }
+  %main
+    .new-game
+      %h2.new-game__title 
+        Edit Game
+        %br
+        %span.new-game__title__description
+          試合を編集しましょう
+      = form_with model: @game, url:team_game_path(@team.id, @game.id) ,method: :patch, class: "Box", local: true do |f|
+        = render partial: "games/shared/error_messages", locals: { game: @game }
+        .field
+          = f.label :日にち
+          %br/
+          = f.date_field :date, class: "input-form"
+        .field
+          = f.label :開始時間
+          %br/
+          = f.time_field :begin_time, class: "input-form"
+        .field
+          = f.label :終了時間
+          %br/
+          = f.time_field :finish_time, class: "input-form"
+        .field
+          = f.label :対戦相手
+          %br/
+          = f.text_field :opponent, class: "input-form"
+        .field
+          = f.label :場所
+          %br/
+          = f.text_field :place, class: "input-form"
+        .field
+          = f.submit "変更を保存する", class: "sign-btn"
