@@ -39,3 +39,10 @@
         = notification.game.opponent
         &emsp;
         = notification.game.place
+  - when "dm"
+    %p
+      = visited.name
+      さんから
+      = link_to "DM", rooms_path do
+        DM
+      が届きました
