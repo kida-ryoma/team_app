@@ -14,7 +14,7 @@
             %i.fa.fa-circle
         = link_to "Notice", team_notifications_path(team.id)
       %li
-        = link_to "DM", ""
+        = link_to "DM", rooms_path
       - if current_user.admin?
         %li 
           = link_to "Edit", edit_team_path(team.id)
