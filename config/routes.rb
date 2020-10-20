@@ -2,14 +2,18 @@ Rails.application.routes.draw do
   devise_for :users, controllers:{
     registrations: "users/registrations"
   }
+
   devise_scope :user do
     get 'users/registrations/admin_signup' => 'users/registrations#admin_new'
     post "users/registrations/admin_create" => "users/registrations#admin_create"
     post "users/guest_sign_in", to: "users/sessions#new_guest"
   end
+
   get 'homes/index'
   root "homes#index"
+
   resources :users, only: :show
+
   resources :teams do
     resources :notifications, only: :index
     resources :games do
@@ -31,6 +35,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages, only: [:create]
+
+  resources :rooms, only: [:index, :create, :show]
 end
 
 def devise_scope(scope)
