@@ -1,0 +1,28 @@
+.main-wrapper
+  = render partial: "teams/sidebar", locals: { team: @team }
+  %main
+    .new-game
+      %h2.new-game__title 
+        = @user.name
+      .dm-content
+        - @dms.each do |dm| 
+          - if dm.user_id == current_user.id 
+            .self
+              %p.self__content
+                = dm.content
+          - else
+            .other
+              %p.other__content
+                = dm.content 
+
+    = form_with model: @dm, local: true, class:"chat-form" do |f|
+      = f.text_field :content
+      = f.hidden_field :room_id 
+      = f.button type: "submit" do
+        %i.far.fa-paper-plane
+    -# 非同期用
+    -# = form_with model: @dm, data: {remote: true},class:"chat-form" do |f|
+    -#   = f.text_field :content
+    -#   = f.hidden_field :room_id 
+    -#   = f.button type: "submit" do
+    -#     %i.far.fa-paper-plane
