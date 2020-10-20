@@ -1,0 +1,12 @@
+- if current_user.admin?
+  = render partial: "teams/create_gamebtn", locals: { team: @team }
+.main-wrapper
+  = render partial: "teams/sidebar", locals: { team: @team }
+  %main
+    .new-game
+      %h2.new-game__title 
+        DM
+      - @members.each do |member|
+        = member.name
+        = link_to room_path(member) do
+          %i.far.fa-comment
