@@ -22,3 +22,24 @@
     }
   }
 }
+.dm-no-content{
+  height: 50vh;
+
+}
+
+.chat-form{
+  margin-left: 35%;
+  margin-top: 30px;
+  margin-bottom: 40px;
+
+  & .content{
+    width: 50%;
+    height: 45px;
+    display: inline-block;
+  }
+  & .submit{
+    background-color: $cDeepBlue;
+    color: white;
+    margin-left: 5px;
+  }
+}

@@ -3,7 +3,9 @@ class MessagesController < ApplicationController
     @dm = current_user.messages.new(dm_params)
     if @dm.save
       @dm.create_notification_dm(current_user, session[:user_id])
-      redirect_to room_path(params[:room_id])
+      respond_to do |format|
+        format.json
+      end
     else
       redirect_back(fallback_location: root_path)
     end
