@@ -1,0 +1,45 @@
+.dm-content{
+  width: 70%;
+  margin: 0 auto;
+  & .self{
+    width: 35%;
+    margin-left: 65%;
+    &__content{
+      background-color: lightskyblue;
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  }
+  & .other{
+    width: 55%;
+    margin-right: 45%;
+    &__content{
+      background-color: white;
+      color: $cDeepBlue;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  }
+}
+.dm-no-content{
+  height: 50vh;
+
+}
+
+.chat-form{
+  margin-left: 35%;
+  margin-top: 30px;
+  margin-bottom: 40px;
+
+  & .content{
+    width: 50%;
+    height: 45px;
+    display: inline-block;
+  }
+  & .submit{
+    background-color: $cDeepBlue;
+    color: white;
+    margin-left: 5px;
+  }
+}

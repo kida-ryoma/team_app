@@ -1,4 +1,3 @@
-
 - notifications.each do |notification|
   - visitor = notification.visitor
   - visited = notification.visited
@@ -39,3 +38,10 @@
         = notification.game.opponent
         &emsp;
         = notification.game.place
+  - when "dm"
+    %p
+      = visitor.name
+      さんから
+      = link_to room_path(notification.visitor) do
+        DM
+      が届きました
