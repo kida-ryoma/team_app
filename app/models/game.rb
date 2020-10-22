@@ -10,7 +10,7 @@ class Game < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :games_users, dependent: :destroy
   has_many :users, through: :games_users
-
+  has_one :game_result, dependent: :destroy
 
   # ◆カレンダー：gem simple_calendarでは"start_time"と"end_time"ベースでカレンダーのdayに入る。今回は日付と時間の入力を分けており、時間カラムには今日に日付が入ってしまうため、simple_calendarの仕様踏まえて明示的にstart_timeとend_timeを日付カラムの日にちに設定しなければならない。そのため開始時間と終了時間の命名をかぶらないようにbegin_timeとfinish_timeにした。
   def start_time
