@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :notifications, only: :index
     resources :games do
       member do
+        resources :game_results, only: [:new, :create]
+      end
+      member do
         post "send_remind"
       end
       resources :games_users, only: [:edit, :update] do
