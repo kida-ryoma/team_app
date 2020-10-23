@@ -16,10 +16,14 @@
           = f.label :相手チーム得点
           %br/
           = f.number_field :rival_score, class: "input-form"
-        .field
-          = f.fields_for :game_scorers do |game_scorer|
-            = game_scorer.label :自チーム得点者
-            %br/
-            = game_scorer.collection_select :user_id, @game.team.users ,:id, :name,{},class: "input-form"
+        .field#a
+          .field__scorer{data:{index: 0}}
+            = f.fields_for :game_scorers do |game_scorer|
+              = game_scorer.label :自チーム得点者
+              %br/
+              = game_scorer.collection_select :user_id, @game.team.users ,:id, :name,{},class: "input-form"
+              %button.btn{type: "button"} 
         .field
           = f.submit "試合を追加する", class: "sign-btn"
+
+          
