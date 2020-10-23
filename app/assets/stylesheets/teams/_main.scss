@@ -27,6 +27,11 @@ main{
       padding: 30px;
       margin-top: 50px;
       margin-bottom: 50px;
+      &__header{
+        a{
+          text-decoration: none;
+        }
+      }
       .simple-calendar{
         .calendar-heading{
           font-size: 30px;
