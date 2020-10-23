@@ -11,6 +11,8 @@ require('jquery');
 require("channels");
 require("./tab");
 require("./dm");
+require("./add_scorer");
+
 
 
 

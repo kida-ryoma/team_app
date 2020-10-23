@@ -46,6 +46,9 @@
                     = @game.place
               - if current_user.admin?
                 .cancel
+                  = link_to new_team_game_result_path(@team.id, @game.id) ,class: "btn" do
+                    試合を結果を入力する
+                .cancel
                   = link_to team_game_path(@team.id, @game.id) ,class: "btn", method: :delete do
                     試合をキャンセルする
                 .cancel
