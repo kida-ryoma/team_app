@@ -9,6 +9,7 @@ class GameResultsController < ApplicationController
 
   def create
     @game_result = GameResult.create!(game_result_params)
+    # GameScorer.where(game_result_id: @game_result.id).update(game_id: @game.id)
     redirect_to team_game_path(@team.id, @game.id)
   end
 
@@ -27,6 +28,8 @@ class GameResultsController < ApplicationController
       :my_score,
       :rival_score,
       game_scorers_attributes:[:user_id]
-    ).merge(game_id: params[:id])
+    ).merge(
+      game_id: params[:id]
+    )
   end
 end

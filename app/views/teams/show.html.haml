@@ -14,21 +14,40 @@
           .tab-panel
             .group
               %ul.tab-group
+                -# チームモデルにプロフィールカラムを追加した際に以下を追加
+                -# %li.tab.is-active 
+                -# チームプロフィール
                 %li.tab.is-active 
-                  チームプロフィール
-                %li.tab
                   所属選手
                 %li.tab
-                  試合日程
+                  得点ランキング
                 %li.tab
                   成績
               .panel-group
+                -# チームモデルにプロフィールカラムを追加した際に以下を追加
+                -# .panel.is-show
+                -#   .panel__profile
                 .panel.is-show
-                  .panel__profile
-                .panel
                   .panel__players
+                    - @members.each do |member|
+                      = member.name
                 .panel
-                  .panel__date
+                  .panel__scores
+                    - @members.each do |member|
+                      = member.name
+                      = GameScorer.count_scores(member.id)
                 .panel
                   .panel__result
-              
+                    - @games.each do |game|
+                      - game_result = game.game_result
+                      - if game_result.present?
+                        = game.opponent
+                        = game_result.my_score
+                        \-
+                        = game_result.rival_score
+                        = game.date.month
+                        %span /
+                        = game.date.day
+                        %span (
+                        = %w(日 月 火 水 木 金 土)[game.date.wday]
+                        %span )

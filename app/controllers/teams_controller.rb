@@ -27,6 +27,7 @@ class TeamsController < ApplicationController
 
   def show
     @members = User.where(team_id: @team.id)
+    @games = Game.includes(:game_result)
   end
 
   def edit
