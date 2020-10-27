@@ -34,7 +34,7 @@
                 .panel
                   .panel__scores
                     - @members.each do |member|
-                      - if member.game_score.present?
+                      - if member.game_scorers.present?
                         = member.name
                         = GameScorer.count_scores(member.id)
                 .panel

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :authenticate
 
   def show
+    @going_games = GamesUser.includes(:game).where('user_id = ? and status_id = ?', current_user.id, 2)
   end
 
 
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def set_games_users
-    @games_users = GamesUser.includes(:game).where('user_id = ? and status_id = ?', current_user.id, 1)
+    @notyet_games = GamesUser.includes(:game).where('user_id = ? and status_id = ?', current_user.id, 1)
   end
 
 end
