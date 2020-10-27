@@ -14,26 +14,45 @@
           .tab-panel
             .group
               %ul.tab-group
+                -# ユーザー情報編集機能実装後追加
+                -#   %li.tab
+                -#     プロフィール
+                -# %li.tab
+                -#   成績
                 %li.tab.is-active 
-                  プロフィール
-                %li.tab
-                  成績
-                %li.tab
                   参加する試合
                 %li.tab
-                  参加可否未決定試合
+                  出欠未報告の試合
               .panel-group
+                -# ユーザー情報編集機能実装後追加
+                -# .panel
+                -#   .panel__profile
+                -# .panel
+                -#   .panel__players
                 .panel.is-show
-                  .panel__profile
-                .panel
-                  .panel__players
-                .panel
                   .panel__date
+                    - if @going_games.present?
+                      - @going_games.each do |game|
+                        = link_to team_game_path(@team.id, game.game.id) do
+                          = game.game.date.month
+                          %span /
+                          = game.game.date.day
+                          %span (
+                          = %w(日 月 火 水 木 金 土)[game.game.date.wday]
+                          %span ) 
+                          &emsp;
+                          = game.game.begin_time.to_s(:time)
+                          〜
+                          = game.game.finish_time.to_s(:time)
+                          &emsp;
+                          = game.game.opponent
+                          &emsp;
                 .panel
                   .panel__result
-                    - @games_users.each do |games_user|
+                    - @notyet_games.each do |games_user|
                       .panel-box
-                        .panel-box__left
+                        -# .panel-box__left
+                        = link_to team_game_path(@team.id, games_user.game.id) do
                           = games_user.game.date.month
                           %span /
                           = games_user.game.date.day
@@ -41,10 +60,12 @@
                           = %w(日 月 火 水 木 金 土)[games_user.game.date.wday]
                           %span ) 
                           &emsp;
-                          = games_user.game.begin_time.strftime(' %H:%M')
+                          = games_user.game.begin_time.to_s(:time)
+                          〜
+                          = games_user.game.finish_time.to_s(:time)
                           &emsp;
                           = games_user.game.opponent
                           &emsp;
-                        .panel-box__right
-                          = link_to "参加する", team_game_games_user_path(@team.id,games_user.game_id,games_user.id), class: "participate-btn",method: :patch
-                          = link_to "参加しない", update_no_team_game_games_user_path(@team.id,games_user.game_id,games_user.id),class: "participate-btn", method: :patch
+                        -# .panel-box__right
+                        -#   = link_to "参加する", team_game_games_user_path(@team.id,games_user.game_id,games_user.id), class: "participate-btn",method: :patch
+                        -#   = link_to "参加しない", update_no_team_game_games_user_path(@team.id,games_user.game_id,games_user.id),class: "participate-btn", method: :patch
