@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_action :authenticate
   before_action :set_team
+  before_action :set_game , except: [:index, :new, :create]
   before_action :if_not_admin, except: [:index, :show]
 
   def index
@@ -28,30 +29,30 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
     @members = GamesUser.eager_load(:user, :status).where(game_id: @game.id)
-    @going_members = GamesUser.where('game_id = ? and status_id = ?', @game.id, 2) 
+    # 参加表明しているメンバーを抽出(配列)
+    @going_members = @members.select{ |a| a.status_id == 2}
+    # ログインユーザーの出欠情報取得(配列)
+    @games_user = @members.select{ |a| a.user_id == current_user.id}
+
+    # @games_user  = GamesUser.where('game_id = ? and user_id = ?', @game.id, current_user.id)
   end
 
   def edit
-    @game = Game.find(params[:id])
   end
 
   def update
-    @game = Game.find(params[:id])
     @game.update(game_params)
     redirect_to team_game_path(@team.id, @game.id)
   end
 
   def destroy
-    @game = Game.find(params[:id])
     @game.destroy
     flash[:success] = "試合が削除されました"
     redirect_to main_team_path(@team.id)
   end
 
   def send_remind
-    @game = Game.find(params[:id])
     @members = @team.users
     @members.each do |member|
       @game.create_notification_remind_game(current_user, member.id)
@@ -61,6 +62,10 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def set_game
+    @game = Game.find(params[:id])
+  end
 
   def set_team
     @team = Team.find(params[:team_id])
