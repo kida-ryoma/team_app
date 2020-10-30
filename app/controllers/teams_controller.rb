@@ -8,6 +8,8 @@ class TeamsController < ApplicationController
     #今日以降で直近のGameレコードを一つ取得
     @latest_game = Game.where('team_id = ? and date >= ? ', @team.id, Date.today).order(date: "ASC").limit(1)[0]
     @games = @team.games
+    #参加未確認がある試合を取得
+    @unconfirmed_games = Game.joins(:games_users).where('team_id = ? and status_id >= ? ', @team.id, 1)
   end
 
   def new
@@ -24,7 +26,9 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @members = User.where(team_id: @team.id)
+    # スコアした数でメンバーをソート（ゴールランキング表示）
+    @members = User.joins(:game_scorers).where(team_id: @team.id).group(:user_id).order('count(user_id) desc')
+    @games = Game.includes(:game_result)
   end
 
   def edit

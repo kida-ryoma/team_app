@@ -18,12 +18,19 @@
               .next-game__left  
                 日にち
               .next-game__right
-                = @latest_game.date
+                = @latest_game.date.month
+                %span /
+                = @latest_game.date.day
+                %span (
+                = %w(日 月 火 水 木 金 土)[@latest_game.date.wday]
+                %span )
             .next-game__time.mini-box
               .next-game__left
                 時間
               .next-game__right
-                = @latest_game.time
+                = @latest_game.begin_time.to_s(:time)
+                〜
+                = @latest_game.finish_time.to_s(:time)
             .next-game__place.mini-box
               .next-game__left 
                 場所
@@ -31,25 +38,27 @@
                 = @latest_game.place
       .box
         = render partial: "calendar", locals: { team: @team, games: @games }
-      .box.confirmation
-        %h2.box__header
-          参加確認が済んでいない試合
-        %table
-          %thead
-            %tr
-              %th  日時
-              %th  対戦相手
-              %th  参加未確認
-          %tbody
-            %tr
-              %td  09/03
-              %td  セレッソ大阪
-              %td  3人
-            %tr
-              %td  09/26
-              %td  横浜Fマリノス
-              %td  7人
-            %tr
-              %td  10/02
-              %td  浦和レッズ
-              %td  4人
+      - if current_user.admin?
+        .box.confirmation
+          %h2.box__header
+            参加確認が済んでいない試合
+          %table
+            %thead
+              %tr
+                %th  日にち
+                %th  対戦相手
+                %th  参加未確認人数
+            %tbody
+              - @unconfirmed_games.each do |game|
+                %tr
+                  %td
+                    = game.date.month
+                    %span /
+                    = game.date.day
+                    %span (
+                    = %w(日 月 火 水 木 金 土)[game.date.wday]
+                    %span )
+                  %td
+                    = game.opponent
+                  %td
+                    = GamesUser.count_unconfirmed_members(game.id)
