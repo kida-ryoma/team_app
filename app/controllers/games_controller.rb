@@ -34,8 +34,6 @@ class GamesController < ApplicationController
     @going_members = @members.select{ |a| a.status_id == 2}
     # ログインユーザーの出欠情報取得(配列)
     @games_user = @members.select{ |a| a.user_id == current_user.id}
-
-    # @games_user  = GamesUser.where('game_id = ? and user_id = ?', @game.id, current_user.id)
   end
 
   def edit

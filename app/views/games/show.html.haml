@@ -44,12 +44,14 @@
                     場所
                   .game-box__right
                     = @game.place
-                -# - @a.each do |a|
                 - @games_user.each do |games_user|
                   -if games_user.status_id == 1
-                    .cancel
-                      = link_to "参加する", team_game_games_user_path(@team.id, @game.id, games_user.id), class: "participate-btn",method: :patch
-                      = link_to "参加しない", update_no_team_game_games_user_path(@team.id, @game.id, games_user.id),class: "participate-btn", method: :patch
+                    .game-box
+                      .game-box__left
+                        参加可否提出
+                      .game-box__right
+                        = link_to "参加する", team_game_games_user_path(@team.id, @game.id, games_user.id), class: "participate-btn",method: :patch
+                        = link_to "参加しない", update_no_team_game_games_user_path(@team.id, @game.id, games_user.id),class: "participate-btn", method: :patch
               - if current_user.admin?
                 .cancel
                   = link_to new_team_game_result_path(@team.id, @game.id) ,class: "btn" do
