@@ -9,7 +9,7 @@ main{
   width: 75%;
   background-color: $cLightBlue;
   min-height: 100vh;
-  display: flex;
+  // display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
@@ -18,7 +18,7 @@ main{
     width: 70%;
     margin: 0 auto;
     min-height: 100vh;
-    display: flex;
+    // display: flex;
     flex-direction: column;
     justify-content: space-around;
     .box{

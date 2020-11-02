@@ -13,8 +13,6 @@
     font-size: 2em;
   }
 }
-
-
 .team-tab{
   width: 100%;
   margin: 0 auto;
@@ -39,8 +37,65 @@
   }
   .panel-group{
     height:100px;
+    font-size: $sFontL;
     .panel{
       display:none;
+      &__players{
+        display: flex;
+        flex-wrap: wrap;
+        &__name{
+          width: 50%;
+        }
+      }
+      &__scores{
+        &__group{
+          display: flex;
+          justify-content: center;
+          &__kind{
+            flex-grow: 1;
+            flex: 1;
+            padding: 5px;
+            border: 1px solid $cDeepBlue;
+            text-align: center;
+            font-size: $sFontM;
+
+          }
+        }
+        &__data-group{
+          display: flex;
+          &__data{
+            flex-grow: 1;
+            flex: 1;
+            padding: 5px;
+            border: 1px solid $cDeepBlue;
+            text-align: center;
+          }
+        }
+      }
+      &__result{
+        &__group{
+          display: flex;
+          justify-content: center;
+          &__kind{
+            flex-grow: 1;
+            flex: 1;
+            padding: 5px;
+            border: 1px solid $cDeepBlue;
+            text-align: center;
+            font-size: $sFontM;
+          }
+        }
+        &__data-group{
+          display: flex;
+          &__data{
+            flex-grow: 1;
+            flex: 1;
+            padding: 5px;
+            border: 1px solid $cDeepBlue;
+            text-align: center;
+          }
+        }
+      }
     }
     .is-show{
       display:block;

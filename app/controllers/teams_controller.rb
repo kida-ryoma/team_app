@@ -26,8 +26,9 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @members = User.where(team_id: @team.id)
     # スコアした数でメンバーをソート（ゴールランキング表示）
-    @members = User.joins(:game_scorers).where(team_id: @team.id).group(:user_id).order('count(user_id) desc')
+    @score_members = User.joins(:game_scorers).where(team_id: @team.id).group(:user_id).order('count(user_id) desc')
     @games = Game.includes(:game_result)
   end
 

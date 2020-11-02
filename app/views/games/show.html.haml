@@ -1,85 +1,94 @@
+-# = render partial: "teams/sidebar", locals: { team: @team }
+-# %main
+-#   .main-container
+-# - if current_user.admin?
+-#   = render partial: "create_gamebtn", locals: { team: @team }
 .main-wrapper
   = render partial: "teams/sidebar", locals: { team: @team }
   %main
-    .new-game
-      %h2.new-game__title 
-        Game Details
-        %br
-        %span.new-game__title__description
-          試合詳細
-      
-    .team-tab.game
-      .tab-panel
-        .group
-          %ul.tab-group
-            %li.tab.is-active 
-              試合概要
-            %li.tab
-              出欠確認
-          .panel-group
-            .panel.is-show
-              .game-box-wrapper
-                .game-box
-                  .game-box__left
-                    対戦相手
-                  .game-box__right
-                    = @game.opponent
-                .game-box
-                  .game-box__left
-                    日にち
-                  .game-box__right
-                    = @game.date.month
-                    %span /
-                    = @game.date.day
-                    %span (
-                    = %w(日 月 火 水 木 金 土)[@game.date.wday]
-                    %span ) 
-                .game-box
-                  .game-box__left
-                    時間
-                  .game-box__right
-                    = @game.begin_time.strftime(' %H:%M')
-                .game-box
-                  .game-box__left
-                    場所
-                  .game-box__right
-                    = @game.place
-                -# - @a.each do |a|
-                - @games_user.each do |games_user|
-                  -if games_user.status_id == 1
+    .main-container
+      .new-game
+        %h2.new-game__title 
+          Game Details
+          %br
+          %span.new-game__title__description
+            試合詳細
+        .team-tab.game
+          .tab-panel
+            .group
+              %ul.tab-group
+                %li.tab.is-active 
+                  試合概要
+                %li.tab
+                  出欠確認
+              .panel-group
+                .panel.is-show
+                  .game-box-wrapper
+                    .game-box
+                      .game-box__left
+                        対戦相手
+                      .game-box__right
+                        = @game.opponent
+                    .game-box
+                      .game-box__left
+                        日にち
+                      .game-box__right
+                        = @game.date.month
+                        %span /
+                        = @game.date.day
+                        %span (
+                        = %w(日 月 火 水 木 金 土)[@game.date.wday]
+                        %span ) 
+                    .game-box
+                      .game-box__left
+                        時間
+                      .game-box__right
+                        = @game.begin_time.to_s(:time)
+                        〜
+                        = @game.finish_time.to_s(:time)
+                    .game-box
+                      .game-box__left
+                        場所
+                      .game-box__right
+                        = @game.place
+                    - @games_user.each do |games_user|
+                      -if games_user.status_id == 1
+                        .game-box
+                          .game-box__left
+                            参加可否提出
+                          .game-box__right
+                            = link_to "参加する", team_game_games_user_path(@team.id, @game.id, games_user.id), class: "participate-btn",method: :patch
+                            = link_to "参加しない", update_no_team_game_games_user_path(@team.id, @game.id, games_user.id),class: "participate-btn", method: :patch
+                  - if current_user.admin?
                     .cancel
-                      = link_to "参加する", team_game_games_user_path(@team.id, @game.id, games_user.id), class: "participate-btn",method: :patch
-                      = link_to "参加しない", update_no_team_game_games_user_path(@team.id, @game.id, games_user.id),class: "participate-btn", method: :patch
-              - if current_user.admin?
-                .cancel
-                  = link_to new_team_game_result_path(@team.id, @game.id) ,class: "btn" do
-                    試合を結果を入力する
-                .cancel
-                  = link_to team_game_path(@team.id, @game.id) ,class: "btn", method: :delete do
-                    試合をキャンセルする
-                .cancel
-                  = link_to edit_team_game_path(@team.id, @game.id) ,class: "btn" do
-                    試合情報を編集する
-            .panel
-              .game-box-wrapper
-                %h2 
-                  %span
-                    参加者
-                    = @going_members.count
-                    名
-                - @members.each do |member|
-                  .game-box
-                    .game-box__left.name
-                      = member.user.name
-                    .game-box__right.btn
-                      - if member.status_id == 1
-                        未確認
-                      - if member.status_id == 2
-                        参加
-                      - if member.status_id == 3
-                        不参加
-                    - if current_user.admin?
-                      - if member.status_id == 1
-                        = link_to send_remind_team_game_path(@team.id, @game.id) ,method: :post do
-                          %i.fas.fa-bell
-    
+                      = link_to new_team_game_result_path(@team.id, @game.id) ,class: "btn" do
+                        試合を結果を入力する
+                    .cancel
+                      = link_to team_game_path(@team.id, @game.id) ,class: "btn", method: :delete do
+                        試合をキャンセルする
+                    .cancel
+                      = link_to edit_team_game_path(@team.id, @game.id) ,class: "btn" do
+                        試合情報を編集する
+                .panel
+                  .game-box-wrapper
+                    %h2 
+                      %span
+                        参加者
+                        = @going_members.count
+                        名
+                    - @members.each do |member|
+                      .game-box
+                        .game-box__left.name
+                          = member.user.name
+                        .game-box__right.btn
+                          - if member.status_id == 1
+                            未確認
+                          - if member.status_id == 2
+                            参加
+                          - if member.status_id == 3
+                            不参加
+                        - if current_user.admin?
+                          - if member.status_id == 1
+                            = link_to send_remind_team_game_path(@team.id, @game.id) ,method: :post do
+                              %i.fas.fa-bell
+        

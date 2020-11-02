@@ -31,4 +31,11 @@
       }
     }
   }
+  &__date{
+    border-bottom: 1px solid $cGray;
+    padding: 10px 0px;
+    width: 80%;
+    margin: 0 auto;
+    font-size: $sFontL !important;
+  }
 }

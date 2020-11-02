@@ -19,16 +19,27 @@
       &:hover{
         color: $cDeepBlue;
         background-color: white;
-        
       }
     }
   }
   .game-box-wrapper{
     background-color: white;
-      border-radius: 10px;
-      padding: 30px;
-      width: 100%;
-      margin: 0 auto;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    margin: 0 auto;
+    .participate-btn{
+      text-decoration: none;
+      padding: 3px 20px;
+      background-color: $cDeepBlue;
+      color: white;
+      border-radius: 5px;
+      &:hover{
+        color: $cDeepBlue;
+        background-color: white;
+        border: 1px solid $cDeepBlue;
+      }
+    }
     .game-box{
       display: flex;
       margin: 15px 0;
