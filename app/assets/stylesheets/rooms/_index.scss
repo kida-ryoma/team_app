@@ -1,0 +1,15 @@
+.users{
+  & .user{
+    display: flex;
+    font-size: 27px;
+    width: 30%;
+    justify-content: space-between;
+    margin: 0 auto 15px auto;
+    &__name{
+      display: inline-block;
+    }
+    &__dm{
+      display: inline-block;
+    }
+  }
+}
