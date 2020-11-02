@@ -43,7 +43,9 @@
                       .game-box__left
                         時間
                       .game-box__right
-                        = @game.begin_time.strftime(' %H:%M')
+                        = @game.begin_time.to_s(:time)
+                        〜
+                        = @game.finish_time.to_s(:time)
                     .game-box
                       .game-box__left
                         場所

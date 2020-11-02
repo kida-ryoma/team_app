@@ -15,7 +15,9 @@
         = %w(日 月 火 水 木 金 土)[notification.game.date.wday]
         %span ) 
         &emsp;
-        = notification.game.begin_time.strftime(' %H:%M')
+        = notification.game.begin_time.to_s(:time)
+        〜
+        = notification.game.finish_time.to_s(:time)
         &emsp;
         = notification.game.opponent
         &emsp;
