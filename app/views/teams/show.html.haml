@@ -30,25 +30,50 @@
                 .panel.is-show
                   .panel__players
                     - @members.each do |member|
-                      = member.name
+                      .panel__players__name
+                        = member.name
                 .panel
                   .panel__scores
-                    - @members.each do |member|
-                      - if member.game_scorers.present?
-                        = member.name
-                        = GameScorer.count_scores(member.id)
+                    .panel__scores__group
+                      .panel__scores__group__kind
+                        順位
+                      .panel__scores__group__kind
+                        名前
+                      .panel__scores__group__kind
+                        ゴール数
+                    .panel__scores__data-group
+                      - @score_members.each_with_index do |member, num|
+                        - if member.game_scorers.present?
+                          .panel__scores__data-group__data
+                            - num += 1
+                            = num
+                          .panel__scores__data-group__data
+                            = member.name
+                          .panel__scores__data-group__data
+                            = GameScorer.count_scores(member.id)
                 .panel
                   .panel__result
-                    - @games.each do |game|
-                      - game_result = game.game_result
-                      - if game_result.present?
-                        = game.opponent
-                        = game_result.my_score
-                        \-
-                        = game_result.rival_score
-                        = game.date.month
-                        %span /
-                        = game.date.day
-                        %span (
-                        = %w(日 月 火 水 木 金 土)[game.date.wday]
-                        %span )
+                    .panel__result__group
+                      .panel__result__group__kind
+                        対戦相手
+                      .panel__result__group__kind
+                        スコア
+                      .panel__result__group__kind
+                        日程
+                    .panel__result__data-group
+                      - @games.each do |game|
+                        - game_result = game.game_result
+                        - if game_result.present?
+                          .panel__result__data-group__data
+                            = game.opponent
+                          .panel__result__data-group__data
+                            = game_result.my_score
+                            \-
+                            = game_result.rival_score
+                          .panel__result__data-group__data
+                            = game.date.month
+                            %span /
+                            = game.date.day
+                            %span (
+                            = %w(日 月 火 水 木 金 土)[game.date.wday]
+                            %span )
