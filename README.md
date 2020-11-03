@@ -27,11 +27,10 @@ http://www.myteamapp.net/
 &emsp;&emsp;○ユーザーにとって直感的に操作できるようUI/UXをなるべくシンプルで分かりやすいデザインにした  
 &emsp;&emsp;○離脱率を下げるために、なるべく情報量は最低限に、デザインに余白を持たせるようにした  
   
-・バックエンド
-&emsp;&emsp;○
+・バックエンド  
 &emsp;&emsp;○ファットコントローラーとならぬよう出来る限りモデル側に処理を実装  
 
-・技術
+・技術  
 &emsp;&emsp;○モダンな技術の採用。( Docker・AWS・Capistrano )  
 &emsp;&emsp;○変更後即時に本番環境で確認できるようcapistranoの( 自動デプロイ )実装
 
@@ -46,15 +45,21 @@ http://www.myteamapp.net/
 ・試合追加機能  
 ・試合出欠管理機能  
 ・カレンダー機能  
+・試合結果保存機能  
+・個人成績確認機能  
+・DM機能  
 ・通知機能  
-&emsp;&emsp;○試合が追加された時に通知が来る  
+&emsp;&emsp;○試合が追加された時  
+&emsp;&emsp;○試合出欠報告をリマインドした時  
+&emsp;&emsp;○DMが届いた時  
+
 ・メール機能  
 &emsp;&emsp;○マネージャーがチームにメンバーを招待したい時にメールを送る  
 
 ## 環境・使用技術
 ### フロントエンド
 ・SCSS(BEM)  
-・Javascript  
+・Javascript、jQuery、Ajax
 
 ### バックエンド
 ・Ruby 2.6.5  
@@ -69,6 +74,13 @@ http://www.myteamapp.net/
 ・MariaDB  
 ・Nginx、 Puma  
 
+### その他使用技術  
+・非同期通信  
+・Action Mailer  
+・HTTPS接続  
+・チーム開発を意識したGitHubの活用 （コミットの粒度、プルリク、マージ）  
+・実際にクライアントの友人にプロトタイプを確認しながらデザインや機能を追加、改善  
+
 ### インフラ構成図
 
 ![](https://i.gyazo.com/4fcdefa35adf5e692e9c4f0b9adefa66.png)
@@ -76,14 +88,11 @@ http://www.myteamapp.net/
 ## ER図
 ![](https://i.gyazo.com/73046115157bc1c9222bec774b13cf1e.png)
 
+
+
 ## 今後実装したい機能・技術
 ・試合情報編集・削除機能  
 ・管理者権限追加付与機能  
-・試合結果保存機能  
-・個人成績確認機能  
-・DM機能  
-・通知機能の追加  
-&emsp;&emsp;○DMが届いた時  
 
 ・レスポンシブデザイン  
 ・CircleCIを導入する
