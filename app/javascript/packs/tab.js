@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener("turbolinks:load", function () {
   const tabs = document.getElementsByClassName('tab');
 
   for(let i = 0; i < tabs.length; i++) { 

@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function(){
-  console.log("yaho")
   function buildHTML(index){
     var html = 
     `<div class="field__scorer" data-index="${index}>
@@ -14,8 +13,7 @@ $(document).on('turbolinks:load', function(){
   lastIndex = $('.field__scorer:last').data('index');
   fileIndex.splice(0, lastIndex);
 
-  $('button').on('click', function(e){
-    console.log(this)
+  $('.add-scorer').on('click', function(e){
     const targetIndex = $(this).parent().data('index');
     e.preventDefault();
     let html = buildHTML(fileIndex[0]);
