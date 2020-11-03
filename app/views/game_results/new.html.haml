@@ -22,7 +22,7 @@
               = game_scorer.label :自チーム得点者
               %br/
               = game_scorer.collection_select :user_id, @game.team.users ,:id, :name,{},class: "input-form"
-              %button.btn{type: "button"} 
+              %button.btn.add-scorer{type: "button"} 
         .field
           = f.submit "試合を追加する", class: "sign-btn"
 
