@@ -8,9 +8,10 @@
         DM
       .users
         - @members.each do |member|
-          .user
-            .user__name
-              = member.name
-            .user__dm
-              = link_to room_path(member) do
-                %i.far.fa-comment
+          - unless member.id == current_user.id
+            .user
+              .user__name
+                = member.name
+              .user__dm
+                = link_to room_path(member) do
+                  %i.far.fa-comment
